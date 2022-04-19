@@ -109,8 +109,33 @@ valeur_temperature = [
 
 
 def image_converter(root_correspondant, canvas_correspondant, ring1, ring2, ring3, ring4, ring5, ring6):
+    global flèche_temporaire_1, flèche_temporaire_2
     image_resistance_vide = ImageTk.PhotoImage(file = "img/blank_resistance.png")
-    canvas_correspondant.create_image( 50, 170, image = image_resistance_vide, anchor='nw')
+    canvas_correspondant.create_image(50, 170, image = image_resistance_vide, anchor='nw')
+    image_flèche_1 = ImageTk.PhotoImage(file = "img/arrows/first.png")
+    canvas_correspondant.create_image(80, 148, image = image_flèche_1, anchor='nw')
+    image_flèche_2 = ImageTk.PhotoImage(file = "img/arrows/second.png")
+    canvas_correspondant.create_image(306, 155, image = image_flèche_2, anchor='nw')
+    image_flèche_4 = ImageTk.PhotoImage(file = "img/arrows/fourth.png")
+    canvas_correspondant.create_image(420, 147, image = image_flèche_4, anchor='nw')
+    image_flèche_5 = ImageTk.PhotoImage(file = "img/arrows/five.png")
+    canvas_correspondant.create_image(540, 146, image = image_flèche_5, anchor='nw')
+    if ring3.get() != 'Aucun' : 
+        image_flèche_3 = ImageTk.PhotoImage(file = "img/arrows/third.png")
+        flèche_temporaire_1 = canvas_correspondant.create_image(368, 153, image = image_flèche_3, anchor='nw')
+    else :
+        try :
+            canvas_correspondant.delete(flèche_temporaire_1)
+        except :
+            pass
+    if ring6.get() != 'Aucun' : 
+        image_flèche_6 = ImageTk.PhotoImage(file = "img/arrows/six.png")
+        flèche_temporaire_2 = canvas_correspondant.create_image(600, 450, image = image_flèche_6, anchor='nw')
+    else :
+        try :
+            canvas_correspondant.delete(flèche_temporaire_2)
+        except :
+            pass
     if ring1.get() == '1':
         image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/brown.png")
         canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
@@ -345,7 +370,6 @@ def spawn_selecteurs(root_correspondant, canvas_correspondant):
     button_validation = Button(root_correspondant, text="Valider ✓", command=lambda *args: image_converter(root_correspondant, canvas_correspondant, anneau1, anneau2, anneau3, anneau_multipli, anneau_tolerance, anneau_temperature), font=("Helvetica", 18), fg='BLACK', bg="#feb58a", height = 2, width = 12)
     canvas_correspondant.create_window(870, 380, anchor='nw', window=button_validation)
     image_converter(root_correspondant, canvas_correspondant, anneau1, anneau2, anneau3, anneau_multipli, anneau_tolerance, anneau_temperature)
-
 
 
 def open_value_to_color():
