@@ -1,2 +1,2 @@
-# Electrical Resistance Converter
+# ⚡ Electrical Resistance Converter
  
