@@ -277,7 +277,7 @@ def image_converter(root_correspondant, canvas_correspondant, ring1, ring2, ring
     elif ring5.get() == '±0.25%' :
         image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/blue.png")
         canvas_correspondant.create_image( 50, 170, image = image_anneau5, anchor='nw')
-    elif ring5.get() == '±0.1%' :
+    elif ring5.get() == '±0.10%' :
         image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/purple.png")
         canvas_correspondant.create_image( 50, 170, image = image_anneau5, anchor='nw')
     if ring6.get() == '250ppm/K' :
