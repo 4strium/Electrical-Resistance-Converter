@@ -87,26 +87,203 @@ valeur_multipli = [
 valeur_tolerance = [
     "±10%",
     "±5%",
-    "±4%",
-    "±3%",
     "±2%",
     "±1%",
     "±0.5%",
     "±0.25%",
-    "±0.10%",
-    "±0.05%"
+    "±0.10%"
 ]
 
 valeur_temperature = [
-    "200ppm",
-    "100ppm",
-    "50ppm",
-    "25ppm",
-    "15ppm",
-    "10ppm",
-    "5ppm",
+    "250ppm/K",
+    "100ppm/K",
+    "50ppm/K",
+    "25ppm/K",
+    "20ppm/K",
+    "15ppm/K",
+    "10ppm/K",
+    "5ppm/K",
+    "1ppm/K",
     "Aucun"
 ]
+
+
+def image_converter(root_correspondant, canvas_correspondant, ring1, ring2, ring3, ring4, ring5, ring6):
+    image_resistance_vide = ImageTk.PhotoImage(file = "img/blank_resistance.png")
+    canvas_correspondant.create_image( 50, 170, image = image_resistance_vide, anchor='nw')
+    if ring1.get() == '1':
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/brown.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
+    elif ring1.get() == '2':
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/red.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
+    elif ring1.get() == '3':
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/orange.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
+    elif ring1.get() == '4':
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/yellow.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
+    elif ring1.get() == '5':
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/green.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
+    elif ring1.get() == '6':
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/blue.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
+    elif ring1.get() == '7':
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/purple.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
+    elif ring1.get() == '8':
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/grey.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
+    elif ring1.get() == '9':
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/white.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
+    if ring2.get() == '0':
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/black.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
+    elif ring2.get() == '1':
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/brown.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
+    elif ring2.get() == '2':
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/red.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
+    elif ring2.get() == '3':
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/orange.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
+    elif ring2.get() == '4':
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/yellow.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
+    elif ring2.get() == '5':
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/green.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
+    elif ring2.get() == '6':
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/blue.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
+    elif ring2.get() == '7':
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/purple.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
+    elif ring2.get() == '8':
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/grey.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
+    elif ring2.get() == '9':
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/white.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
+    if ring3.get() == '0' :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/black.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
+    elif ring3.get() == '1' :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/brown.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
+    elif ring3.get() == '2' :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/red.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
+    elif ring3.get() == '3' :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/orange.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
+    elif ring3.get() == '4' :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/yellow.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
+    elif ring3.get() == '5' :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/green.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
+    elif ring3.get() == '6' :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/blue.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
+    elif ring3.get() == '7' :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/purple.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
+    elif ring3.get() == '8' :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/grey.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
+    elif ring3.get() == '9' :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/white.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
+    if ring4.get() == 'x1' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/black.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
+    elif ring4.get() == 'x10' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/brown.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
+    elif ring4.get() == 'x100' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/red.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
+    elif ring4.get() == 'x1k' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/orange.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
+    elif ring4.get() == 'x10k' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/yellow.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
+    elif ring4.get() == 'x100k' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/green.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
+    elif ring4.get() == 'x1M' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/blue.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
+    elif ring4.get() == 'x10M' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/purple.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
+    elif ring4.get() == 'x100M' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/grey.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
+    elif ring4.get() == 'x1G' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/white.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
+    elif ring4.get() == 'x0.1' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/gold.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
+    elif ring4.get() == 'x0.01' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/silver.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
+    if ring5.get() == '±10%' :
+        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/silver.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau5, anchor='nw')
+    elif ring5.get() == '±5%' :
+        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/gold.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau5, anchor='nw')
+    elif ring5.get() == '±1%' :
+        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/brown.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau5, anchor='nw')
+    elif ring5.get() == '±2%' :
+        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/red.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau5, anchor='nw')
+    elif ring5.get() == '±0.5%' :
+        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/green.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau5, anchor='nw')
+    elif ring5.get() == '±0.25%' :
+        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/blue.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau5, anchor='nw')
+    elif ring5.get() == '±0.1%' :
+        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/purple.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau5, anchor='nw')
+    if ring6.get() == '250ppm/K' :
+        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/black.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
+    elif ring6.get() == '100ppm/K' :
+        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/brown.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
+    elif ring6.get() == '50ppm/K' :
+        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/red.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
+    elif ring6.get() == '25ppm/K' :
+        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/yellow.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
+    elif ring6.get() == '20ppm/K' :
+        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/green.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
+    elif ring6.get() == '15ppm/K' :
+        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/orange.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
+    elif ring6.get() == '10ppm/K' :
+        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/blue.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
+    elif ring6.get() == '5ppm/K' :
+        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/purple.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
+    elif ring6.get() == '1ppm/K' :
+        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/grey.png")
+        canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
+    
+    mainloop()
 
 
 def spawn_selecteurs(root_correspondant, canvas_correspondant):
@@ -157,7 +334,7 @@ def spawn_selecteurs(root_correspondant, canvas_correspondant):
     p=canvas_correspondant.create_rectangle(canvas_correspondant.bbox(o),fill="#feb58a", width = 1, outline = 'white')
     canvas_correspondant.tag_lower(p,o)
     anneau_temperature = StringVar()
-    anneau_temperature.set(valeur_temperature[7])
+    anneau_temperature.set(valeur_temperature[9])
     drop_chiffre_temperature = OptionMenu(root_correspondant, anneau_temperature, *valeur_temperature)
     drop_chiffre_temperature.config(width = 10, font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
     drop_chiffre_temperature["menu"].config(font=("Helvetica", 12), fg ='black', bg="#feb58a", activebackground="#feb58a")
@@ -165,13 +342,15 @@ def spawn_selecteurs(root_correspondant, canvas_correspondant):
     t=canvas_correspondant.create_text(938, 610, text='Coefficient\ntempérature :', font=("Helvetica", 16), fill="BLACK", justify = CENTER)
     u=canvas_correspondant.create_rectangle(canvas_correspondant.bbox(t),fill="#feb58a", width = 1, outline = 'white')
     canvas_correspondant.tag_lower(u,t)
-
+    button_validation = Button(root_correspondant, text="Valider ✓", command=lambda *args: image_converter(root_correspondant, canvas_correspondant, anneau1, anneau2, anneau3, anneau_multipli, anneau_tolerance, anneau_temperature), font=("Helvetica", 18), fg='BLACK', bg="#feb58a", height = 2, width = 12)
+    canvas_correspondant.create_window(870, 380, anchor='nw', window=button_validation)
+    image_converter(root_correspondant, canvas_correspondant, anneau1, anneau2, anneau3, anneau_multipli, anneau_tolerance, anneau_temperature)
 
 
 
 def open_value_to_color():
     root_value_to_color = Toplevel(root)
-    root_value_to_color.title("Conversion d'une valeur au code couleur d'une résistance électrique")
+    root_value_to_color.title("Convertisseur valeurs/couleurs des résistances électriques par Romain MELLAZA")
     root_value_to_color.geometry("1080x720")
     root_value_to_color.minsize(1080, 720)
     root_value_to_color.maxsize(1080, 720)
@@ -180,7 +359,6 @@ def open_value_to_color():
     bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
     canvas_value_to_color.create_image( 0, 0, image = bg, anchor='nw')
     spawn_selecteurs(root_value_to_color, canvas_value_to_color)
-    mainloop()
 
 button_value_to_color = Button(root, text="Valeur ➔ Couleur", command=open_value_to_color, font=("Helvetica", 35), fg='white', bg="#feb58a", height = 2, width = 18)
 button_value_to_color_window = canvas_accueil.create_window(30, 425, anchor='nw', window=button_value_to_color)
