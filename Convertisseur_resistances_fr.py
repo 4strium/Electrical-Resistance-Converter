@@ -3,6 +3,7 @@
 from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk
+import time
 
 root = Tk()
 
@@ -415,6 +416,25 @@ def open_value_to_color():
     else :
         messagebox.showinfo("Erreur","Vous avez déjà ouvert une fenêtre de conversion !")
 
+def suppr_image(canvas_correspondant):
+    global image_clignotant_ring_1_window
+    canvas_correspondant.delete(image_clignotant_ring_1_window)
+
+def display_image(canvas_correspondant):
+    global image_clignotant_ring_1_window
+    image_clignotant_ring_1_window = canvas_correspondant.create_image(145, 170, image = image_clignotant_ring_1, anchor='nw')
+
+def clignotement(root_correspondant, canvas_correspondant):
+    count = 0
+    chrono_x = 500
+    chrono_y = 1000
+    while count < 1000 :
+        root_correspondant.after(chrono_x, lambda *args: suppr_image(canvas_correspondant))
+        root_correspondant.after(chrono_y, lambda *args: display_image(canvas_correspondant))
+        count += 1
+        chrono_x += 1000
+        chrono_y += 1000
+
 def open_color_to_value():
     global count_window_open, root_color_to_value
     if count_window_open == 0 :
@@ -442,6 +462,7 @@ def open_color_to_value():
         messagebox.showinfo("Erreur","Vous avez déjà ouvert une fenêtre de conversion !")
 
 def open_color_to_value_anneau_1(root_precedent):
+    global image_clignotant_ring_1_window, image_clignotant_ring_1
     root_precedent.destroy()
     root_color_to_value_anneau_1 = Toplevel(root)
     root_color_to_value_anneau_1.title("De quelle couleur est le premier anneau de votre resistance ?")
@@ -455,6 +476,12 @@ def open_color_to_value_anneau_1(root_precedent):
     tu=canvas_color_to_value_anneau_1.create_text(540, 100, text='De quelle couleur est le premier\nanneau de votre resistance ?', font=("Helvetica", 45), fill="WHITE", justify = CENTER)
     vz=canvas_color_to_value_anneau_1.create_rectangle(canvas_color_to_value_anneau_1.bbox(tu),fill="#feb58a", width = 1, outline = 'BLACK')
     canvas_color_to_value_anneau_1.tag_lower(vz,tu)
+    image_resistance_vide = ImageTk.PhotoImage(file = "img/blank_resistance.png")
+    canvas_color_to_value_anneau_1.create_image(145, 170, image = image_resistance_vide, anchor='nw')
+    image_clignotant_ring_1 = ImageTk.PhotoImage(file = "img/anneau_1/clignotant.png")
+    image_clignotant_ring_1_window = canvas_color_to_value_anneau_1.create_image(145, 170, image = image_clignotant_ring_1, anchor='nw')
+    clignotement(root_color_to_value_anneau_1, canvas_color_to_value_anneau_1)
+    mainloop()
 
 button_value_to_color = Button(root, text="Valeur ➔ Couleur", command=open_value_to_color, font=("Helvetica", 35), fg='white', bg="#feb58a", height = 2, width = 18)
 button_value_to_color_window = canvas_accueil.create_window(30, 425, anchor='nw', window=button_value_to_color)
