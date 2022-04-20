@@ -109,6 +109,18 @@ valeur_temperature = [
     "Aucun"
 ]
 
+couleur_anneau_1 = [
+    "Marron",
+    "Rouge",
+    "Orange",
+    "Jaune",
+    "Vert",
+    "Bleu",
+    "Violet",
+    "Gris",
+    "Blanc"
+]
+
 
 def reset():
     global count_window_open, root_value_to_color
@@ -398,6 +410,17 @@ def spawn_selecteurs(root_correspondant, canvas_correspondant):
     canvas_correspondant.create_window(870, 380, anchor='nw', window=button_validation)
     image_converter(root_correspondant, canvas_correspondant, anneau1, anneau2, anneau3, anneau_multipli, anneau_tolerance, anneau_temperature)
 
+def spawn_selecteurs_part2(root_correspondant, canvas_correspondant, step):
+    global couleur_anneau_1
+    if step == 1 :
+        anneau1_part2 = StringVar()
+        anneau1_part2.set(couleur_anneau_1[0])
+        drop_couleur_1 = OptionMenu(root_correspondant, anneau1_part2, *couleur_anneau_1)
+        drop_couleur_1.config(width = 10, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
+        drop_couleur_1["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
+        canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_1)
+        button_validation_couleur_1 = Button(root_correspondant, text="Valider ✓", command=lambda *args: None, font=("Helvetica", 25), fg='WHITE', bg="#feb58a", height = 1, width = 10)
+        canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_1)
 
 def open_value_to_color():
     global count_window_open, root_value_to_color
@@ -481,6 +504,8 @@ def open_color_to_value_anneau_1(root_precedent):
     image_clignotant_ring_1 = ImageTk.PhotoImage(file = "img/anneau_1/clignotant.png")
     image_clignotant_ring_1_window = canvas_color_to_value_anneau_1.create_image(145, 170, image = image_clignotant_ring_1, anchor='nw')
     clignotement(root_color_to_value_anneau_1, canvas_color_to_value_anneau_1)
+    etape = 1
+    spawn_selecteurs_part2(root_color_to_value_anneau_1, canvas_color_to_value_anneau_1, etape)
     mainloop()
 
 button_value_to_color = Button(root, text="Valeur ➔ Couleur", command=open_value_to_color, font=("Helvetica", 35), fg='white', bg="#feb58a", height = 2, width = 18)
