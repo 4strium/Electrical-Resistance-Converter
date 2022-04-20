@@ -121,6 +121,64 @@ couleur_anneau_1 = [
     "Blanc"
 ]
 
+couleur_anneau_2 = [
+    "Noir",
+    "Marron",
+    "Rouge",
+    "Orange",
+    "Jaune",
+    "Vert",
+    "Bleu",
+    "Violet",
+    "Gris",
+    "Blanc"
+]
+
+couleur_anneau_2 = [
+    "Noir",
+    "Marron",
+    "Rouge",
+    "Orange",
+    "Jaune",
+    "Vert",
+    "Bleu",
+    "Violet",
+    "Gris",
+    "Blanc"
+]
+
+couleur_anneau_3 = [
+    "Noir",
+    "Marron",
+    "Rouge",
+    "Orange",
+    "Jaune",
+    "Vert",
+    "Bleu",
+    "Violet",
+    "Gris",
+    "Blanc",
+    "Il n'y en a pas !"
+]
+
+couleur_anneau_4 = [
+    "Noir",
+    "Marron",
+    "Rouge",
+    "Orange",
+    "Jaune",
+    "Vert",
+    "Bleu",
+    "Violet",
+    "Gris",
+    "Blanc",
+    "Or",
+    "Argent"
+]
+
+
+
+
 
 def reset():
     global count_window_open, root_value_to_color
@@ -346,8 +404,82 @@ def image_converter(root_correspondant, canvas_correspondant, ring1, ring2, ring
         root_correspondant.protocol('WM_DELETE_WINDOW', reset)
     except:
         pass
-    
     mainloop()
+
+def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring, step):
+    global chiffre_1, chiffre_2, chiffre_3, chiffre_4, chiffre_5, chiffre_6
+    if ring.get() == 'Marron' :
+        if step == 1 :
+            chiffre_1 = 1
+            open_color_to_value_anneau_2(root_correspondant)
+        elif step == 2 :
+            chiffre_2 = 1
+        elif step == 3 :
+            chiffre_3 = 1
+    if ring.get() == 'Rouge' :
+        if step == 1 :
+            chiffre_1 = 2
+            open_color_to_value_anneau_2(root_correspondant)
+        elif step == 2 :
+            chiffre_2 = 2
+        elif step == 3 :
+            chiffre_3 = 2
+    if ring.get() == 'Orange' :
+        if step == 1 :
+            chiffre_1 = 3
+            open_color_to_value_anneau_2(root_correspondant)
+        elif step == 2 :
+            chiffre_2 = 3
+        elif step == 3 :
+            chiffre_3 = 3
+    if ring.get() == 'Jaune' :
+        if step == 1 :
+            chiffre_1 = 4
+            open_color_to_value_anneau_2(root_correspondant)
+        elif step == 2 :
+            chiffre_2 = 4
+        elif step == 3 :
+            chiffre_3 = 4
+    if ring.get() == 'Vert' :
+        if step == 1 :
+            chiffre_1 = 5
+            open_color_to_value_anneau_2(root_correspondant)
+        elif step == 2 :
+            chiffre_2 = 5
+        elif step == 3 :
+            chiffre_3 = 5
+    if ring.get() == 'Bleu' :
+        if step == 1 :
+            chiffre_1 = 6
+            open_color_to_value_anneau_2(root_correspondant)
+        elif step == 2 :
+            chiffre_2 = 6
+        elif step == 3 :
+            chiffre_3 = 6
+    if ring.get() == 'Violet' :
+        if step == 1 :
+            chiffre_1 = 7
+            open_color_to_value_anneau_2(root_correspondant)
+        elif step == 2 :
+            chiffre_2 = 7
+        elif step == 3 :
+            chiffre_3 = 7
+    if ring.get() == 'Gris' :
+        if step == 1 :
+            chiffre_1 = 8
+            open_color_to_value_anneau_2(root_correspondant)
+        elif step == 2 :
+            chiffre_2 = 8
+        elif step == 3 :
+            chiffre_3 = 8
+    if ring.get() == 'Blanc' :
+        if step == 1 :
+            chiffre_1 = 9
+            open_color_to_value_anneau_2(root_correspondant)
+        elif step == 2 :
+            chiffre_2 = 9
+        elif step == 3 :
+            chiffre_3 = 9
 
 
 def spawn_selecteurs(root_correspondant, canvas_correspondant):
@@ -415,6 +547,51 @@ def spawn_selecteurs_part2(root_correspondant, canvas_correspondant, step):
     if step == 1 :
         anneau1_part2 = StringVar()
         anneau1_part2.set(couleur_anneau_1[0])
+        drop_couleur_1 = OptionMenu(root_correspondant, anneau1_part2, *couleur_anneau_1)
+        drop_couleur_1.config(width = 10, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
+        drop_couleur_1["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
+        canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_1)
+        button_validation_couleur_1 = Button(root_correspondant, text="Valider ✓", command=lambda *args: color_converter_number_1_to_3(root_correspondant, canvas_correspondant, anneau1_part2, step), font=("Helvetica", 25), fg='WHITE', bg="#feb58a", height = 1, width = 10)
+        canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_1)
+    if step == 2 :
+        anneau2_part2 = StringVar()
+        anneau2_part2.set(couleur_anneau_2[0])
+        drop_couleur_2 = OptionMenu(root_correspondant, anneau2_part2, *couleur_anneau_2)
+        drop_couleur_2.config(width = 10, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
+        drop_couleur_2["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
+        canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_2)
+        button_validation_couleur_2 = Button(root_correspondant, text="Valider ✓", command=lambda *args: color_converter_number_1_to_3(root_correspondant, canvas_correspondant, anneau2_part2, step), font=("Helvetica", 25), fg='WHITE', bg="#feb58a", height = 1, width = 10)
+        canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_2)
+    if step == 3 :
+        anneau3_part2 = StringVar()
+        anneau3_part2.set(couleur_anneau_3[0])
+        drop_couleur_1 = OptionMenu(root_correspondant, anneau1_part2, *couleur_anneau_1)
+        drop_couleur_1.config(width = 10, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
+        drop_couleur_1["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
+        canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_1)
+        button_validation_couleur_1 = Button(root_correspondant, text="Valider ✓", command=lambda *args: color_converter_number_1_to_3(root_correspondant, canvas_correspondant, anneau3_part2, step), font=("Helvetica", 25), fg='WHITE', bg="#feb58a", height = 1, width = 10)
+        canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_1)
+    if step == 4 :
+        anneau4_part2 = StringVar()
+        anneau4_part2.set(couleur_anneau_1[0])
+        drop_couleur_1 = OptionMenu(root_correspondant, anneau1_part2, *couleur_anneau_1)
+        drop_couleur_1.config(width = 10, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
+        drop_couleur_1["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
+        canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_1)
+        button_validation_couleur_1 = Button(root_correspondant, text="Valider ✓", command=lambda *args: None, font=("Helvetica", 25), fg='WHITE', bg="#feb58a", height = 1, width = 10)
+        canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_1)
+    if step == 5 :
+        anneau5_part2 = StringVar()
+        anneau5_part2.set(couleur_anneau_1[0])
+        drop_couleur_1 = OptionMenu(root_correspondant, anneau1_part2, *couleur_anneau_1)
+        drop_couleur_1.config(width = 10, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
+        drop_couleur_1["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
+        canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_1)
+        button_validation_couleur_1 = Button(root_correspondant, text="Valider ✓", command=lambda *args: None, font=("Helvetica", 25), fg='WHITE', bg="#feb58a", height = 1, width = 10)
+        canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_1)
+    if step == 6 :
+        anneau6_part2 = StringVar()
+        anneau6_part2.set(couleur_anneau_1[0])
         drop_couleur_1 = OptionMenu(root_correspondant, anneau1_part2, *couleur_anneau_1)
         drop_couleur_1.config(width = 10, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
         drop_couleur_1["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
@@ -506,6 +683,30 @@ def open_color_to_value_anneau_1(root_precedent):
     clignotement(root_color_to_value_anneau_1, canvas_color_to_value_anneau_1)
     etape = 1
     spawn_selecteurs_part2(root_color_to_value_anneau_1, canvas_color_to_value_anneau_1, etape)
+    mainloop()
+
+def open_color_to_value_anneau_2(root_precedent):
+    global image_clignotant_ring_2_window, image_clignotant_ring_2
+    root_precedent.destroy()
+    root_color_to_value_anneau_2 = Toplevel(root)
+    root_color_to_value_anneau_2.title("De quelle couleur est le deuxième anneau de votre resistance ?")
+    root_color_to_value_anneau_2.geometry("1080x720")
+    root_color_to_value_anneau_2.minsize(1080, 720)
+    root_color_to_value_anneau_2.maxsize(1080, 720)
+    canvas_color_to_value_anneau_2 = Canvas(root_color_to_value_anneau_2, width = 1080, height = 720)
+    canvas_color_to_value_anneau_2.pack(fill = "both", expand = True)
+    bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
+    canvas_color_to_value_anneau_2.create_image( 0, 0, image = bg, anchor='nw')
+    tu=canvas_color_to_value_anneau_2.create_text(540, 100, text='De quelle couleur est le deuxième\nanneau de votre resistance ?', font=("Helvetica", 45), fill="WHITE", justify = CENTER)
+    vz=canvas_color_to_value_anneau_2.create_rectangle(canvas_color_to_value_anneau_2.bbox(tu),fill="#feb58a", width = 1, outline = 'BLACK')
+    canvas_color_to_value_anneau_2.tag_lower(vz,tu)
+    image_resistance_vide = ImageTk.PhotoImage(file = "img/blank_resistance.png")
+    canvas_color_to_value_anneau_2.create_image(145, 170, image = image_resistance_vide, anchor='nw')
+    image_clignotant_ring_2 = ImageTk.PhotoImage(file = "img/anneau_2/clignotant.png")
+    image_clignotant_ring_2_window = canvas_color_to_value_anneau_2.create_image(145, 170, image = image_clignotant_ring_2, anchor='nw')
+    clignotement(root_color_to_value_anneau_2, canvas_color_to_value_anneau_2)
+    etape = 2
+    spawn_selecteurs_part2(root_color_to_value_anneau_2, canvas_color_to_value_anneau_2, etape)
     mainloop()
 
 button_value_to_color = Button(root, text="Valeur ➔ Couleur", command=open_value_to_color, font=("Helvetica", 35), fg='white', bg="#feb58a", height = 2, width = 18)
