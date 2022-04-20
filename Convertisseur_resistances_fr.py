@@ -121,16 +121,26 @@ def image_converter(root_correspondant, canvas_correspondant, ring1, ring2, ring
     image_flèche_5 = ImageTk.PhotoImage(file = "img/arrows/five.png")
     canvas_correspondant.create_image(540, 146, image = image_flèche_5, anchor='nw')
     if ring3.get() != 'Aucun' : 
-        image_flèche_3 = ImageTk.PhotoImage(file = "img/arrows/third.png")
-        flèche_temporaire_1 = canvas_correspondant.create_image(368, 153, image = image_flèche_3, anchor='nw')
+        try : 
+            canvas_correspondant.delete(flèche_temporaire_1)
+            image_flèche_3 = ImageTk.PhotoImage(file = "img/arrows/third.png")
+            flèche_temporaire_1 = canvas_correspondant.create_image(368, 153, image = image_flèche_3, anchor='nw')
+        except : 
+            image_flèche_3 = ImageTk.PhotoImage(file = "img/arrows/third.png")
+            flèche_temporaire_1 = canvas_correspondant.create_image(368, 153, image = image_flèche_3, anchor='nw')
     else :
         try :
             canvas_correspondant.delete(flèche_temporaire_1)
         except :
             pass
-    if ring6.get() != 'Aucun' : 
-        image_flèche_6 = ImageTk.PhotoImage(file = "img/arrows/six.png")
-        flèche_temporaire_2 = canvas_correspondant.create_image(600, 450, image = image_flèche_6, anchor='nw')
+    if ring6.get() != 'Aucun' :
+        try :
+            canvas_correspondant.delete(flèche_temporaire_2)
+            image_flèche_6 = ImageTk.PhotoImage(file = "img/arrows/six.png")
+            flèche_temporaire_2 = canvas_correspondant.create_image(600, 450, image = image_flèche_6, anchor='nw')
+        except :
+            image_flèche_6 = ImageTk.PhotoImage(file = "img/arrows/six.png")
+            flèche_temporaire_2 = canvas_correspondant.create_image(600, 450, image = image_flèche_6, anchor='nw')
     else :
         try :
             canvas_correspondant.delete(flèche_temporaire_2)
