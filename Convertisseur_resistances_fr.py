@@ -28,6 +28,7 @@ k=canvas_accueil.create_text(540.45, 310, text='Quelle conversion voulez-vous r�
 l=canvas_accueil.create_rectangle(canvas_accueil.bbox(k),fill="#feb58a", width = 1)
 canvas_accueil.tag_lower(l,k)
 
+count_window_open = 0
 
 valeur_anneau_1 = [
     # 0 impossible
@@ -107,6 +108,14 @@ valeur_temperature = [
     "Aucun"
 ]
 
+
+def reset():
+    global count_window_open, root_value_to_color
+    count_window_open = 0
+    try :
+        root_value_to_color.destroy()
+    except :
+        pass
 
 def image_converter(root_correspondant, canvas_correspondant, ring1, ring2, ring3, ring4, ring5, ring6):
     global flèche_temporaire_1, flèche_temporaire_2
@@ -317,6 +326,10 @@ def image_converter(root_correspondant, canvas_correspondant, ring1, ring2, ring
     elif ring6.get() == '1ppm/K' :
         image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/grey.png")
         canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
+    try:
+        root_correspondant.protocol('WM_DELETE_WINDOW', reset)
+    except:
+        pass
     
     mainloop()
 
@@ -383,16 +396,21 @@ def spawn_selecteurs(root_correspondant, canvas_correspondant):
 
 
 def open_value_to_color():
-    root_value_to_color = Toplevel(root)
-    root_value_to_color.title("Convertisseur valeurs/couleurs des résistances électriques par Romain MELLAZA")
-    root_value_to_color.geometry("1080x720")
-    root_value_to_color.minsize(1080, 720)
-    root_value_to_color.maxsize(1080, 720)
-    canvas_value_to_color = Canvas( root_value_to_color, width = 1080, height = 720)
-    canvas_value_to_color.pack(fill = "both", expand = True)
-    bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
-    canvas_value_to_color.create_image( 0, 0, image = bg, anchor='nw')
-    spawn_selecteurs(root_value_to_color, canvas_value_to_color)
+    global count_window_open, root_value_to_color
+    if count_window_open == 0 :
+        root_value_to_color = Toplevel(root)
+        root_value_to_color.title("Convertisseur valeurs/couleurs des résistances électriques par Romain MELLAZA")
+        root_value_to_color.geometry("1080x720")
+        root_value_to_color.minsize(1080, 720)
+        root_value_to_color.maxsize(1080, 720)
+        canvas_value_to_color = Canvas( root_value_to_color, width = 1080, height = 720)
+        canvas_value_to_color.pack(fill = "both", expand = True)
+        bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
+        canvas_value_to_color.create_image( 0, 0, image = bg, anchor='nw')
+        count_window_open += 1
+        spawn_selecteurs(root_value_to_color, canvas_value_to_color)
+    else :
+        messagebox.showinfo("Erreur","Vous avez déjà ouvert une fenêtre de conversion !")
 
 button_value_to_color = Button(root, text="Valeur ➔ Couleur", command=open_value_to_color, font=("Helvetica", 35), fg='white', bg="#feb58a", height = 2, width = 18)
 button_value_to_color_window = canvas_accueil.create_window(30, 425, anchor='nw', window=button_value_to_color)
