@@ -115,7 +115,10 @@ def reset():
     try :
         root_value_to_color.destroy()
     except :
-        pass
+        try :
+            root_color_to_value.destroy()
+        except :
+            pass
 
 def image_converter(root_correspondant, canvas_correspondant, ring1, ring2, ring3, ring4, ring5, ring6):
     global flèche_temporaire_1, flèche_temporaire_2
@@ -412,10 +415,51 @@ def open_value_to_color():
     else :
         messagebox.showinfo("Erreur","Vous avez déjà ouvert une fenêtre de conversion !")
 
+def open_color_to_value():
+    global count_window_open, root_color_to_value
+    if count_window_open == 0 :
+        root_color_to_value = Toplevel(root)
+        root_color_to_value.title("Convertisseur valeurs/couleurs des résistances électriques par Romain MELLAZA")
+        root_color_to_value.geometry("1080x720")
+        root_color_to_value.minsize(1080, 720)
+        root_color_to_value.maxsize(1080, 720)
+        canvas_color_to_value = Canvas( root_color_to_value, width = 1080, height = 720)
+        canvas_color_to_value.pack(fill = "both", expand = True)
+        bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
+        canvas_color_to_value.create_image( 0, 0, image = bg, anchor='nw')
+        count_window_open += 1
+        tu=canvas_color_to_value.create_text(540, 150, text='Prenez la resistance dans votre main.\n\nVous allez devoir répondre à quelques questions\npour déterminer la valeur de celle-ci !', font=("Helvetica", 35), fill="WHITE", justify = CENTER)
+        vz=canvas_color_to_value.create_rectangle(canvas_color_to_value.bbox(tu),fill="#feb58a", width = 1, outline = 'BLACK')
+        canvas_color_to_value.tag_lower(vz,tu)
+        button_validation_2 = Button(root_color_to_value, text="OK ✓", command=lambda *args: open_color_to_value_anneau_1(root_color_to_value), font=("Helvetica", 35), fg='WHITE', bg="#feb58a", height = 2, width = 12)
+        canvas_color_to_value.create_window(375, 475, anchor='nw', window=button_validation_2)
+        try:
+            root_color_to_value.protocol('WM_DELETE_WINDOW', reset)
+        except:
+            pass
+        mainloop()
+    else :
+        messagebox.showinfo("Erreur","Vous avez déjà ouvert une fenêtre de conversion !")
+
+def open_color_to_value_anneau_1(root_precedent):
+    root_precedent.destroy()
+    root_color_to_value_anneau_1 = Toplevel(root)
+    root_color_to_value_anneau_1.title("De quelle couleur est le premier anneau de votre resistance ?")
+    root_color_to_value_anneau_1.geometry("1080x720")
+    root_color_to_value_anneau_1.minsize(1080, 720)
+    root_color_to_value_anneau_1.maxsize(1080, 720)
+    canvas_color_to_value_anneau_1 = Canvas( root_color_to_value_anneau_1, width = 1080, height = 720)
+    canvas_color_to_value_anneau_1.pack(fill = "both", expand = True)
+    bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
+    canvas_color_to_value_anneau_1.create_image( 0, 0, image = bg, anchor='nw')
+    tu=canvas_color_to_value_anneau_1.create_text(540, 100, text='De quelle couleur est le premier\nanneau de votre resistance ?', font=("Helvetica", 45), fill="WHITE", justify = CENTER)
+    vz=canvas_color_to_value_anneau_1.create_rectangle(canvas_color_to_value_anneau_1.bbox(tu),fill="#feb58a", width = 1, outline = 'BLACK')
+    canvas_color_to_value_anneau_1.tag_lower(vz,tu)
+
 button_value_to_color = Button(root, text="Valeur ➔ Couleur", command=open_value_to_color, font=("Helvetica", 35), fg='white', bg="#feb58a", height = 2, width = 18)
 button_value_to_color_window = canvas_accueil.create_window(30, 425, anchor='nw', window=button_value_to_color)
 
-button_color_to_value = Button(root, text="Couleur ➔ Valeur", command=open_value_to_color, font=("Helvetica", 35), fg='white', bg="#feb58a", height = 2, width = 18)
+button_color_to_value = Button(root, text="Couleur ➔ Valeur", command=open_color_to_value, font=("Helvetica", 35), fg='white', bg="#feb58a", height = 2, width = 18)
 button_color_to_value_window = canvas_accueil.create_window(560, 425, anchor='nw', window=button_color_to_value)
 
 
