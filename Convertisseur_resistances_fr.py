@@ -175,7 +175,30 @@ couleur_anneau_4 = [
     "Argent"
 ]
 
+couleur_anneau_5 = [
+    "Marron",
+    "Rouge",
+    "Orange",
+    "Jaune",
+    "Vert",
+    "Bleu",
+    "Violet",
+    "Gris",
+    "Or",
+    "Argent"
+]
 
+couleur_anneau_6 = [
+    "Noir",
+    "Marron",
+    "Rouge",
+    "Orange",
+    "Jaune",
+    "Bleu",
+    "Violet",
+    "Gris",
+    "Il n'y en a pas !"
+]
 
 def reset():
     global count_window_open, root_value_to_color
@@ -412,6 +435,9 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
         elif step == 3 :
             chiffre_3 = 0
             open_color_to_value_anneau_4(root_correspondant)
+        elif step == 4 :
+            chiffre_4 = 'x1'
+            open_color_to_value_anneau_5(root_correspondant)
     if ring.get() == 'Marron' :
         if step == 1 :
             chiffre_1 = 1
@@ -422,6 +448,12 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
         elif step == 3 :
             chiffre_3 = 1
             open_color_to_value_anneau_4(root_correspondant)
+        elif step == 4 :
+            chiffre_4 = 'x10'
+            open_color_to_value_anneau_5(root_correspondant)
+        elif step == 5 :
+            chiffre_5 = '±1%'
+            open_color_to_value_anneau_6(root_correspondant)
     if ring.get() == 'Rouge' :
         if step == 1 :
             chiffre_1 = 2
@@ -432,6 +464,12 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
         elif step == 3 :
             chiffre_3 = 2
             open_color_to_value_anneau_4(root_correspondant)
+        elif step == 4 :
+            chiffre_4 = 'x100'
+            open_color_to_value_anneau_5(root_correspondant)
+        elif step == 5 :
+            chiffre_5 = '±2%'
+            open_color_to_value_anneau_6(root_correspondant)
     if ring.get() == 'Orange' :
         if step == 1 :
             chiffre_1 = 3
@@ -442,6 +480,12 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
         elif step == 3 :
             chiffre_3 = 3
             open_color_to_value_anneau_4(root_correspondant)
+        elif step == 4 :
+            chiffre_4 = 'x1k'
+            open_color_to_value_anneau_5(root_correspondant)
+        elif step == 5 :
+            chiffre_5 = '±3%'
+            open_color_to_value_anneau_6(root_correspondant)
     if ring.get() == 'Jaune' :
         if step == 1 :
             chiffre_1 = 4
@@ -452,6 +496,12 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
         elif step == 3 :
             chiffre_3 = 4
             open_color_to_value_anneau_4(root_correspondant)
+        elif step == 4 :
+            chiffre_4 = 'x10k'
+            open_color_to_value_anneau_5(root_correspondant)
+        elif step == 5 :
+            chiffre_5 = '±4%'
+            open_color_to_value_anneau_6(root_correspondant)
     if ring.get() == 'Vert' :
         if step == 1 :
             chiffre_1 = 5
@@ -462,6 +512,12 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
         elif step == 3 :
             chiffre_3 = 5
             open_color_to_value_anneau_4(root_correspondant)
+        elif step == 4 :
+            chiffre_4 = 'x100k'
+            open_color_to_value_anneau_5(root_correspondant)
+        elif step == 5 :
+            chiffre_5 = '±0.5%'
+            open_color_to_value_anneau_6(root_correspondant)
     if ring.get() == 'Bleu' :
         if step == 1 :
             chiffre_1 = 6
@@ -472,6 +528,12 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
         elif step == 3 :
             chiffre_3 = 6
             open_color_to_value_anneau_4(root_correspondant)
+        elif step == 4 :
+            chiffre_4 = 'x1M'
+            open_color_to_value_anneau_5(root_correspondant)
+        elif step == 5 :
+            chiffre_5 = '±0.25%'
+            open_color_to_value_anneau_6(root_correspondant)
     if ring.get() == 'Violet' :
         if step == 1 :
             chiffre_1 = 7
@@ -482,6 +544,12 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
         elif step == 3 :
             chiffre_3 = 7
             open_color_to_value_anneau_4(root_correspondant)
+        elif step == 4 :
+            chiffre_4 = 'x10M'
+            open_color_to_value_anneau_5(root_correspondant)
+        elif step == 5 :
+            chiffre_5 = '±0.10%'
+            open_color_to_value_anneau_6(root_correspondant)
     if ring.get() == 'Gris' :
         if step == 1 :
             chiffre_1 = 8
@@ -492,6 +560,12 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
         elif step == 3 :
             chiffre_3 = 8
             open_color_to_value_anneau_4(root_correspondant)
+        elif step == 4 :
+            chiffre_4 = 'x100M'
+            open_color_to_value_anneau_5(root_correspondant)
+        elif step == 5 :
+            chiffre_5 = '±0.05%'
+            open_color_to_value_anneau_6(root_correspondant)
     if ring.get() == 'Blanc' :
         if step == 1 :
             chiffre_1 = 9
@@ -502,10 +576,27 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
         elif step == 3 :
             chiffre_3 = 9
             open_color_to_value_anneau_4(root_correspondant)
+        elif step == 4 :
+            chiffre_4 = 'x1G'
+            open_color_to_value_anneau_5(root_correspondant)
     if ring.get() == "Il n'y en a pas !" :
         if step == 3 :
             chiffre_3 = None
             open_color_to_value_anneau_4(root_correspondant)
+    if ring.get() == 'Or' :
+        if step == 4 :
+            chiffre_4 = 'x0.1'
+            open_color_to_value_anneau_5(root_correspondant)
+        elif step == 5 :
+            chiffre_5 = '±5%'
+            open_color_to_value_anneau_6(root_correspondant)
+    if ring.get() == 'Argent' :
+        if step == 4 :
+            chiffre_4 = 'x0.01'
+            open_color_to_value_anneau_5(root_correspondant) 
+        elif step == 5 :
+            chiffre_5 = '±10%'
+            open_color_to_value_anneau_6(root_correspondant)  
 
 
 def spawn_selecteurs(root_correspondant, canvas_correspondant):
@@ -590,39 +681,39 @@ def spawn_selecteurs_part2(root_correspondant, canvas_correspondant, step):
     if step == 3 :
         anneau3_part2 = StringVar()
         anneau3_part2.set(couleur_anneau_3[10])
-        drop_couleur_1 = OptionMenu(root_correspondant, anneau3_part2, *couleur_anneau_3)
-        drop_couleur_1.config(width = 14, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
-        drop_couleur_1["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
-        canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_1)
-        button_validation_couleur_1 = Button(root_correspondant, text="Valider ✓", command=lambda *args: color_converter_number_1_to_3(root_correspondant, canvas_correspondant, anneau3_part2, step), font=("Helvetica", 25), fg='WHITE', bg="#feb58a", height = 1, width = 10)
-        canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_1)
+        drop_couleur_3 = OptionMenu(root_correspondant, anneau3_part2, *couleur_anneau_3)
+        drop_couleur_3.config(width = 14, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
+        drop_couleur_3["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
+        canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_3)
+        button_validation_couleur_3 = Button(root_correspondant, text="Valider ✓", command=lambda *args: color_converter_number_1_to_3(root_correspondant, canvas_correspondant, anneau3_part2, step), font=("Helvetica", 25), fg='WHITE', bg="#feb58a", height = 1, width = 10)
+        canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_3)
     if step == 4 :
         anneau4_part2 = StringVar()
         anneau4_part2.set(couleur_anneau_4[10])
-        drop_couleur_1 = OptionMenu(root_correspondant, anneau4_part2, *couleur_anneau_4)
-        drop_couleur_1.config(width = 10, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
-        drop_couleur_1["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
-        canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_1)
-        button_validation_couleur_1 = Button(root_correspondant, text="Valider ✓", command=lambda *args: None, font=("Helvetica", 25), fg='WHITE', bg="#feb58a", height = 1, width = 10)
-        canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_1)
+        drop_couleur_4 = OptionMenu(root_correspondant, anneau4_part2, *couleur_anneau_4)
+        drop_couleur_4.config(width = 10, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
+        drop_couleur_4["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
+        canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_4)
+        button_validation_couleur_4 = Button(root_correspondant, text="Valider ✓", command=lambda *args: color_converter_number_1_to_3(root_correspondant, canvas_correspondant, anneau4_part2, step), font=("Helvetica", 25), fg='WHITE', bg="#feb58a", height = 1, width = 10)
+        canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_4)
     if step == 5 :
         anneau5_part2 = StringVar()
-        anneau5_part2.set(couleur_anneau_1[0])
-        drop_couleur_1 = OptionMenu(root_correspondant, anneau1_part2, *couleur_anneau_1)
-        drop_couleur_1.config(width = 10, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
-        drop_couleur_1["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
-        canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_1)
-        button_validation_couleur_1 = Button(root_correspondant, text="Valider ✓", command=lambda *args: None, font=("Helvetica", 25), fg='WHITE', bg="#feb58a", height = 1, width = 10)
-        canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_1)
+        anneau5_part2.set(couleur_anneau_5[9])
+        drop_couleur_5 = OptionMenu(root_correspondant, anneau5_part2, *couleur_anneau_5)
+        drop_couleur_5.config(width = 10, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
+        drop_couleur_5["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
+        canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_5)
+        button_validation_couleur_5 = Button(root_correspondant, text="Valider ✓", command=lambda *args: color_converter_number_1_to_3(root_correspondant, canvas_correspondant, anneau5_part2, step), font=("Helvetica", 25), fg='WHITE', bg="#feb58a", height = 1, width = 10)
+        canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_5)
     if step == 6 :
         anneau6_part2 = StringVar()
         anneau6_part2.set(couleur_anneau_1[0])
-        drop_couleur_1 = OptionMenu(root_correspondant, anneau1_part2, *couleur_anneau_1)
-        drop_couleur_1.config(width = 10, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
-        drop_couleur_1["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
-        canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_1)
-        button_validation_couleur_1 = Button(root_correspondant, text="Valider ✓", command=lambda *args: None, font=("Helvetica", 25), fg='WHITE', bg="#feb58a", height = 1, width = 10)
-        canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_1)
+        drop_couleur_6 = OptionMenu(root_correspondant, anneau6_part2, *couleur_anneau_6)
+        drop_couleur_6.config(width = 14, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
+        drop_couleur_6["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
+        canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_6)
+        button_validation_couleur_6 = Button(root_correspondant, text="Valider ✓", command=lambda *args: color_converter_number_1_to_3(root_correspondant, canvas_correspondant, anneau6_part2, step), font=("Helvetica", 25), fg='WHITE', bg="#feb58a", height = 1, width = 10)
+        canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_6)
 
 def open_value_to_color():
     global count_window_open, root_value_to_color
@@ -700,7 +791,7 @@ def open_color_to_value_anneau_1(root_precedent):
     global image_clignotant_ring_1_window, image_clignotant_ring_1
     root_precedent.destroy()
     root_color_to_value_anneau_1 = Toplevel(root)
-    root_color_to_value_anneau_1.title("De quelle couleur est le premier anneau de votre resistance ?")
+    root_color_to_value_anneau_1.title("De quelle couleur est le premier anneau de votre résistance ?")
     root_color_to_value_anneau_1.geometry("1080x720")
     root_color_to_value_anneau_1.minsize(1080, 720)
     root_color_to_value_anneau_1.maxsize(1080, 720)
@@ -708,7 +799,7 @@ def open_color_to_value_anneau_1(root_precedent):
     canvas_color_to_value_anneau_1.pack(fill = "both", expand = True)
     bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
     canvas_color_to_value_anneau_1.create_image( 0, 0, image = bg, anchor='nw')
-    tu=canvas_color_to_value_anneau_1.create_text(540, 100, text='De quelle couleur est le premier\nanneau de votre resistance ?', font=("Helvetica", 45), fill="WHITE", justify = CENTER)
+    tu=canvas_color_to_value_anneau_1.create_text(540, 100, text='De quelle couleur est le premier\nanneau de votre résistance ?', font=("Helvetica", 45), fill="WHITE", justify = CENTER)
     vz=canvas_color_to_value_anneau_1.create_rectangle(canvas_color_to_value_anneau_1.bbox(tu),fill="#feb58a", width = 1, outline = 'BLACK')
     canvas_color_to_value_anneau_1.tag_lower(vz,tu)
     image_resistance_vide = ImageTk.PhotoImage(file = "img/blank_resistance.png")
@@ -724,7 +815,7 @@ def open_color_to_value_anneau_2(root_precedent):
     global image_clignotant_ring_2_window, image_clignotant_ring_2
     root_precedent.destroy()
     root_color_to_value_anneau_2 = Toplevel(root)
-    root_color_to_value_anneau_2.title("De quelle couleur est le deuxième anneau de votre resistance ?")
+    root_color_to_value_anneau_2.title("De quelle couleur est le deuxième anneau de votre résistance ?")
     root_color_to_value_anneau_2.geometry("1080x720")
     root_color_to_value_anneau_2.minsize(1080, 720)
     root_color_to_value_anneau_2.maxsize(1080, 720)
@@ -732,7 +823,7 @@ def open_color_to_value_anneau_2(root_precedent):
     canvas_color_to_value_anneau_2.pack(fill = "both", expand = True)
     bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
     canvas_color_to_value_anneau_2.create_image( 0, 0, image = bg, anchor='nw')
-    tu=canvas_color_to_value_anneau_2.create_text(540, 100, text='De quelle couleur est le deuxième\nanneau de votre resistance ?', font=("Helvetica", 45), fill="WHITE", justify = CENTER)
+    tu=canvas_color_to_value_anneau_2.create_text(540, 100, text='De quelle couleur est le deuxième\nanneau de votre résistance ?', font=("Helvetica", 45), fill="WHITE", justify = CENTER)
     vz=canvas_color_to_value_anneau_2.create_rectangle(canvas_color_to_value_anneau_2.bbox(tu),fill="#feb58a", width = 1, outline = 'BLACK')
     canvas_color_to_value_anneau_2.tag_lower(vz,tu)
     image_resistance_vide = ImageTk.PhotoImage(file = "img/blank_resistance.png")
@@ -775,7 +866,7 @@ def open_color_to_value_anneau_3(root_precedent):
     global image_clignotant_ring_3_window, image_clignotant_ring_3
     root_precedent.destroy()
     root_color_to_value_anneau_3 = Toplevel(root)
-    root_color_to_value_anneau_3.title("De quelle couleur est le troisième anneau de votre resistance ?")
+    root_color_to_value_anneau_3.title("De quelle couleur est le troisième anneau de votre résistance ?")
     root_color_to_value_anneau_3.geometry("1080x720")
     root_color_to_value_anneau_3.minsize(1080, 720)
     root_color_to_value_anneau_3.maxsize(1080, 720)
@@ -783,7 +874,7 @@ def open_color_to_value_anneau_3(root_precedent):
     canvas_color_to_value_anneau_3.pack(fill = "both", expand = True)
     bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
     canvas_color_to_value_anneau_3.create_image( 0, 0, image = bg, anchor='nw')
-    tu=canvas_color_to_value_anneau_3.create_text(540, 100, text='De quelle couleur est le troisième\nanneau de votre resistance ?', font=("Helvetica", 45), fill="WHITE", justify = CENTER)
+    tu=canvas_color_to_value_anneau_3.create_text(540, 100, text='De quelle couleur est le troisième\nanneau de votre résistance ?', font=("Helvetica", 45), fill="WHITE", justify = CENTER)
     vz=canvas_color_to_value_anneau_3.create_rectangle(canvas_color_to_value_anneau_3.bbox(tu),fill="#feb58a", width = 1, outline = 'BLACK')
     canvas_color_to_value_anneau_3.tag_lower(vz,tu)
     image_resistance_vide = ImageTk.PhotoImage(file = "img/blank_resistance.png")
@@ -856,7 +947,7 @@ def open_color_to_value_anneau_4(root_precedent):
     global image_clignotant_ring_4_window, image_clignotant_ring_4
     root_precedent.destroy()
     root_color_to_value_anneau_4 = Toplevel(root)
-    root_color_to_value_anneau_4.title("De quelle couleur est le quatrième anneau de votre resistance ?")
+    root_color_to_value_anneau_4.title("De quelle couleur est le quatrième anneau de votre résistance ?")
     root_color_to_value_anneau_4.geometry("1080x720")
     root_color_to_value_anneau_4.minsize(1080, 720)
     root_color_to_value_anneau_4.maxsize(1080, 720)
@@ -864,7 +955,7 @@ def open_color_to_value_anneau_4(root_precedent):
     canvas_color_to_value_anneau_4.pack(fill = "both", expand = True)
     bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
     canvas_color_to_value_anneau_4.create_image( 0, 0, image = bg, anchor='nw')
-    tu=canvas_color_to_value_anneau_4.create_text(540, 100, text='De quelle couleur est le quatrième\nanneau de votre resistance ?', font=("Helvetica", 45), fill="WHITE", justify = CENTER)
+    tu=canvas_color_to_value_anneau_4.create_text(540, 100, text='De quelle couleur est le quatrième\nanneau de votre résistance ?', font=("Helvetica", 45), fill="WHITE", justify = CENTER)
     vz=canvas_color_to_value_anneau_4.create_rectangle(canvas_color_to_value_anneau_4.bbox(tu),fill="#feb58a", width = 1, outline = 'BLACK')
     canvas_color_to_value_anneau_4.tag_lower(vz,tu)
     image_resistance_vide = ImageTk.PhotoImage(file = "img/blank_resistance.png")
@@ -962,6 +1053,325 @@ def open_color_to_value_anneau_4(root_precedent):
     clignotement(root_color_to_value_anneau_4, canvas_color_to_value_anneau_4, etape)
     spawn_selecteurs_part2(root_color_to_value_anneau_4, canvas_color_to_value_anneau_4, etape)
     mainloop()
+
+def open_color_to_value_anneau_5(root_precedent):
+    global image_clignotant_ring_5_window, image_clignotant_ring_5
+    root_precedent.destroy()
+    root_color_to_value_anneau_5 = Toplevel(root)
+    root_color_to_value_anneau_5.title("De quelle couleur est le cinquième anneau de votre résistance ?")
+    root_color_to_value_anneau_5.geometry("1080x720")
+    root_color_to_value_anneau_5.minsize(1080, 720)
+    root_color_to_value_anneau_5.maxsize(1080, 720)
+    canvas_color_to_value_anneau_5 = Canvas(root_color_to_value_anneau_5, width = 1080, height = 720)
+    canvas_color_to_value_anneau_5.pack(fill = "both", expand = True)
+    bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
+    canvas_color_to_value_anneau_5.create_image( 0, 0, image = bg, anchor='nw')
+    tu=canvas_color_to_value_anneau_5.create_text(540, 100, text='De quelle couleur est le cinquième\nanneau de votre résistance ?', font=("Helvetica", 45), fill="WHITE", justify = CENTER)
+    vz=canvas_color_to_value_anneau_5.create_rectangle(canvas_color_to_value_anneau_5.bbox(tu),fill="#feb58a", width = 1, outline = 'BLACK')
+    canvas_color_to_value_anneau_5.tag_lower(vz,tu)
+    image_resistance_vide = ImageTk.PhotoImage(file = "img/blank_resistance.png")
+    canvas_color_to_value_anneau_5.create_image(145, 170, image = image_resistance_vide, anchor='nw')
+    if chiffre_1 == 1 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/brown.png")
+        canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
+    elif chiffre_1 == 2 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/red.png")
+        canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
+    elif chiffre_1 == 3 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/orange.png")
+        canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
+    elif chiffre_1 == 4 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/yellow.png")
+        canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
+    elif chiffre_1 == 5 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/green.png")
+        canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
+    elif chiffre_1 == 6 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/blue.png")
+        canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
+    elif chiffre_1 == 7 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/purple.png")
+        canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
+    elif chiffre_1 == 8 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/grey.png")
+        canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
+    elif chiffre_1 == 9 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/white.png")
+        canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
+    if chiffre_2 == 0 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/black.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 1 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/brown.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 2 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/red.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 3 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/orange.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 4 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/yellow.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 5 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/green.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 6 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/blue.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 7 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/purple.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 8 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/grey.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 9 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/white.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
+    if chiffre_3 == 0 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/black.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 1 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/brown.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 2 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/red.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 3 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/orange.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 4 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/yellow.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 5 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/green.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 6 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/blue.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 7 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/purple.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 8 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/grey.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 9 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/white.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
+    if chiffre_4 == 'x1' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/black.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x10' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/brown.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x100' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/red.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x1k' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/orange.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x100k' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/green.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x1M' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/blue.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x10M' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/purple.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x100M' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/grey.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x1G' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/white.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x0.1' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/gold.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x0.01' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/silver.png")
+        canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
+    image_clignotant_ring_5 = ImageTk.PhotoImage(file = "img/anneau_5/clignotant.png")
+    image_clignotant_ring_5_window = canvas_color_to_value_anneau_5.create_image(145, 170, image = image_clignotant_ring_5, anchor='nw')
+    etape = 5
+    clignotement(root_color_to_value_anneau_5, canvas_color_to_value_anneau_5, etape)
+    spawn_selecteurs_part2(root_color_to_value_anneau_5, canvas_color_to_value_anneau_5, etape)
+    mainloop()
+
+def open_color_to_value_anneau_6(root_precedent):
+    global image_clignotant_ring_6_window, image_clignotant_ring_6
+    root_precedent.destroy()
+    root_color_to_value_anneau_6 = Toplevel(root)
+    root_color_to_value_anneau_6.title("De quelle couleur est le sixième anneau de votre résistance ?")
+    root_color_to_value_anneau_6.geometry("1080x720")
+    root_color_to_value_anneau_6.minsize(1080, 720)
+    root_color_to_value_anneau_6.maxsize(1080, 720)
+    canvas_color_to_value_anneau_6 = Canvas(root_color_to_value_anneau_6, width = 1080, height = 720)
+    canvas_color_to_value_anneau_6.pack(fill = "both", expand = True)
+    bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
+    canvas_color_to_value_anneau_6.create_image( 0, 0, image = bg, anchor='nw')
+    tu=canvas_color_to_value_anneau_6.create_text(540, 100, text='De quelle couleur est le sixième\nanneau de votre résistance ?', font=("Helvetica", 45), fill="WHITE", justify = CENTER)
+    vz=canvas_color_to_value_anneau_6.create_rectangle(canvas_color_to_value_anneau_6.bbox(tu),fill="#feb58a", width = 1, outline = 'BLACK')
+    canvas_color_to_value_anneau_6.tag_lower(vz,tu)
+    image_resistance_vide = ImageTk.PhotoImage(file = "img/blank_resistance.png")
+    canvas_color_to_value_anneau_6.create_image(145, 170, image = image_resistance_vide, anchor='nw')
+    if chiffre_1 == 1 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/brown.png")
+        canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
+    elif chiffre_1 == 2 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/red.png")
+        canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
+    elif chiffre_1 == 3 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/orange.png")
+        canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
+    elif chiffre_1 == 4 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/yellow.png")
+        canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
+    elif chiffre_1 == 5 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/green.png")
+        canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
+    elif chiffre_1 == 6 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/blue.png")
+        canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
+    elif chiffre_1 == 7 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/purple.png")
+        canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
+    elif chiffre_1 == 8 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/grey.png")
+        canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
+    elif chiffre_1 == 9 :
+        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/white.png")
+        canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
+    if chiffre_2 == 0 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/black.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 1 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/brown.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 2 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/red.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 3 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/orange.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 4 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/yellow.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 5 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/green.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 6 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/blue.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 7 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/purple.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 8 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/grey.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
+    elif chiffre_2 == 9 :
+        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/white.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
+    if chiffre_3 == 0 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/black.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 1 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/brown.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 2 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/red.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 3 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/orange.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 4 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/yellow.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 5 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/green.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 6 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/blue.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 7 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/purple.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 8 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/grey.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
+    elif chiffre_3 == 9 :
+        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/white.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
+    if chiffre_4 == 'x1' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/black.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x10' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/brown.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x100' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/red.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x1k' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/orange.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x100k' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/green.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x1M' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/blue.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x10M' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/purple.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x100M' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/grey.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x1G' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/white.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x0.1' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/gold.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
+    elif chiffre_4 == 'x0.01' :
+        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/silver.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
+    if chiffre_5 == '±1%' :
+        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/brown.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
+    elif chiffre_5 == '±2%' :
+        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/red.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
+    elif chiffre_5 == '±3%' :
+        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/orange.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
+    elif chiffre_5 == '±4%' :
+        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/yellow.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
+    elif chiffre_5 == '±0.5%' :
+        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/green.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
+    elif chiffre_5 == '±0.25%' :
+        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/blue.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
+    elif chiffre_5 == '±0.10%' :
+        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/purple.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
+    elif chiffre_5 == '±0.05%' :
+        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/grey.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
+    elif chiffre_5 == '±5%' :
+        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/gold.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
+    elif chiffre_5 == '±10%' :
+        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/silver.png")
+        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
+    image_clignotant_ring_6 = ImageTk.PhotoImage(file = "img/anneau_6/clignotant.png")
+    image_clignotant_ring_6_window = canvas_color_to_value_anneau_6.create_image(145, 170, image = image_clignotant_ring_6, anchor='nw')
+    etape = 6
+    clignotement(root_color_to_value_anneau_6, canvas_color_to_value_anneau_6, etape)
+    spawn_selecteurs_part2(root_color_to_value_anneau_6, canvas_color_to_value_anneau_6, etape)
+    mainloop()
+
 
 button_value_to_color = Button(root, text="Valeur ➔ Couleur", command=open_value_to_color, font=("Helvetica", 35), fg='white', bg="#feb58a", height = 2, width = 18)
 button_value_to_color_window = canvas_accueil.create_window(30, 425, anchor='nw', window=button_value_to_color)
