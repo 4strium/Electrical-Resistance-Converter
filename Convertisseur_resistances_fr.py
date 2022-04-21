@@ -178,12 +178,9 @@ couleur_anneau_4 = [
 couleur_anneau_5 = [
     "Marron",
     "Rouge",
-    "Orange",
-    "Jaune",
     "Vert",
     "Bleu",
     "Violet",
-    "Gris",
     "Or",
     "Argent"
 ]
@@ -201,15 +198,45 @@ couleur_anneau_6 = [
 ]
 
 def reset():
-    global count_window_open, root_value_to_color
+    global count_window_open
     count_window_open = 0
     try :
         root_value_to_color.destroy()
     except :
-        try :
-            root_color_to_value.destroy()
-        except :
-            pass
+        pass
+    try :
+        root_color_to_value.destroy()
+    except :
+        pass
+    try :
+        root_color_to_value_anneau_1.destroy()
+    except :
+        pass
+    try :
+        root_color_to_value_anneau_2.destroy()
+    except :
+        pass
+    try :
+        root_color_to_value_anneau_3.destroy()
+    except :
+        pass
+    try :
+        root_color_to_value_anneau_4.destroy()
+    except :
+        pass
+    try :
+        root_color_to_value_anneau_5.destroy()
+    except :
+        pass
+    try :
+        root_color_to_value_anneau_6.destroy()
+    except :
+        pass
+    try :
+        root_color_to_value_result.destroy()
+    except :
+        pass
+
 
 def image_converter(root_correspondant, canvas_correspondant, ring1, ring2, ring3, ring4, ring5, ring6):
     global flèche_temporaire_1, flèche_temporaire_2
@@ -436,8 +463,11 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
             chiffre_3 = 0
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = 'x1'
+            chiffre_4 = valeur_multipli[0]
             open_color_to_value_anneau_5(root_correspondant)
+        elif step == 6 :
+            chiffre_6 = valeur_temperature[0]
+            open_color_to_value_result(root_correspondant)
     if ring.get() == 'Marron' :
         if step == 1 :
             chiffre_1 = 1
@@ -449,11 +479,14 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
             chiffre_3 = 1
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = 'x10'
+            chiffre_4 = valeur_multipli[1]
             open_color_to_value_anneau_5(root_correspondant)
         elif step == 5 :
-            chiffre_5 = '±1%'
+            chiffre_5 = valeur_tolerance[3]
             open_color_to_value_anneau_6(root_correspondant)
+        elif step == 6 :
+            chiffre_6 = valeur_temperature[1]
+            open_color_to_value_result(root_correspondant)
     if ring.get() == 'Rouge' :
         if step == 1 :
             chiffre_1 = 2
@@ -465,11 +498,14 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
             chiffre_3 = 2
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = 'x100'
+            chiffre_4 = valeur_multipli[2]
             open_color_to_value_anneau_5(root_correspondant)
         elif step == 5 :
-            chiffre_5 = '±2%'
+            chiffre_5 = valeur_tolerance[2]
             open_color_to_value_anneau_6(root_correspondant)
+        elif step == 6 :
+            chiffre_6 = valeur_temperature[2]
+            open_color_to_value_result(root_correspondant)
     if ring.get() == 'Orange' :
         if step == 1 :
             chiffre_1 = 3
@@ -481,11 +517,11 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
             chiffre_3 = 3
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = 'x1k'
+            chiffre_4 = valeur_multipli[3]
             open_color_to_value_anneau_5(root_correspondant)
-        elif step == 5 :
-            chiffre_5 = '±3%'
-            open_color_to_value_anneau_6(root_correspondant)
+        elif step == 6 :
+            chiffre_6 = valeur_temperature[5]
+            open_color_to_value_result(root_correspondant)
     if ring.get() == 'Jaune' :
         if step == 1 :
             chiffre_1 = 4
@@ -497,11 +533,11 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
             chiffre_3 = 4
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = 'x10k'
+            chiffre_4 = valeur_multipli[4]
             open_color_to_value_anneau_5(root_correspondant)
-        elif step == 5 :
-            chiffre_5 = '±4%'
-            open_color_to_value_anneau_6(root_correspondant)
+        elif step == 6 :
+            chiffre_6 = valeur_temperature[3]
+            open_color_to_value_result(root_correspondant)
     if ring.get() == 'Vert' :
         if step == 1 :
             chiffre_1 = 5
@@ -513,10 +549,10 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
             chiffre_3 = 5
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = 'x100k'
+            chiffre_4 = valeur_multipli[5]
             open_color_to_value_anneau_5(root_correspondant)
         elif step == 5 :
-            chiffre_5 = '±0.5%'
+            chiffre_5 = valeur_tolerance[4]
             open_color_to_value_anneau_6(root_correspondant)
     if ring.get() == 'Bleu' :
         if step == 1 :
@@ -529,11 +565,14 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
             chiffre_3 = 6
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = 'x1M'
+            chiffre_4 = valeur_multipli[6]
             open_color_to_value_anneau_5(root_correspondant)
         elif step == 5 :
-            chiffre_5 = '±0.25%'
+            chiffre_5 = valeur_tolerance[5]
             open_color_to_value_anneau_6(root_correspondant)
+        elif step == 6 :
+            chiffre_6 = valeur_temperature[6]
+            open_color_to_value_result(root_correspondant)
     if ring.get() == 'Violet' :
         if step == 1 :
             chiffre_1 = 7
@@ -545,11 +584,14 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
             chiffre_3 = 7
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = 'x10M'
+            chiffre_4 = valeur_multipli[7]
             open_color_to_value_anneau_5(root_correspondant)
         elif step == 5 :
-            chiffre_5 = '±0.10%'
+            chiffre_5 = valeur_tolerance[6]
             open_color_to_value_anneau_6(root_correspondant)
+        elif step == 6 :
+            chiffre_6 = valeur_temperature[7]
+            open_color_to_value_result(root_correspondant)
     if ring.get() == 'Gris' :
         if step == 1 :
             chiffre_1 = 8
@@ -561,11 +603,11 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
             chiffre_3 = 8
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = 'x100M'
+            chiffre_4 = valeur_multipli[8]
             open_color_to_value_anneau_5(root_correspondant)
-        elif step == 5 :
-            chiffre_5 = '±0.05%'
-            open_color_to_value_anneau_6(root_correspondant)
+        elif step == 6 :
+            chiffre_6 = valeur_temperature[8]
+            open_color_to_value_result(root_correspondant)
     if ring.get() == 'Blanc' :
         if step == 1 :
             chiffre_1 = 9
@@ -577,26 +619,29 @@ def color_converter_number_1_to_3(root_correspondant, canvas_correspondant, ring
             chiffre_3 = 9
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = 'x1G'
+            chiffre_4 = valeur_multipli[9]
             open_color_to_value_anneau_5(root_correspondant)
     if ring.get() == "Il n'y en a pas !" :
         if step == 3 :
             chiffre_3 = None
             open_color_to_value_anneau_4(root_correspondant)
+        elif step == 6 :
+            chiffre_6 = None
+            open_color_to_value_result(root_correspondant)
     if ring.get() == 'Or' :
         if step == 4 :
-            chiffre_4 = 'x0.1'
+            chiffre_4 = valeur_multipli[10]
             open_color_to_value_anneau_5(root_correspondant)
         elif step == 5 :
-            chiffre_5 = '±5%'
+            chiffre_5 = valeur_tolerance[1]
             open_color_to_value_anneau_6(root_correspondant)
     if ring.get() == 'Argent' :
         if step == 4 :
-            chiffre_4 = 'x0.01'
+            chiffre_4 = valeur_multipli[11]
             open_color_to_value_anneau_5(root_correspondant) 
         elif step == 5 :
-            chiffre_5 = '±10%'
-            open_color_to_value_anneau_6(root_correspondant)  
+            chiffre_5 = valeur_tolerance[0]
+            open_color_to_value_anneau_6(root_correspondant)
 
 
 def spawn_selecteurs(root_correspondant, canvas_correspondant):
@@ -698,7 +743,7 @@ def spawn_selecteurs_part2(root_correspondant, canvas_correspondant, step):
         canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_4)
     if step == 5 :
         anneau5_part2 = StringVar()
-        anneau5_part2.set(couleur_anneau_5[9])
+        anneau5_part2.set(couleur_anneau_5[6])
         drop_couleur_5 = OptionMenu(root_correspondant, anneau5_part2, *couleur_anneau_5)
         drop_couleur_5.config(width = 10, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
         drop_couleur_5["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
@@ -707,7 +752,7 @@ def spawn_selecteurs_part2(root_correspondant, canvas_correspondant, step):
         canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_5)
     if step == 6 :
         anneau6_part2 = StringVar()
-        anneau6_part2.set(couleur_anneau_1[0])
+        anneau6_part2.set(couleur_anneau_6[0])
         drop_couleur_6 = OptionMenu(root_correspondant, anneau6_part2, *couleur_anneau_6)
         drop_couleur_6.config(width = 14, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
         drop_couleur_6["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
@@ -788,7 +833,7 @@ def open_color_to_value():
         messagebox.showinfo("Erreur","Vous avez déjà ouvert une fenêtre de conversion !")
 
 def open_color_to_value_anneau_1(root_precedent):
-    global image_clignotant_ring_1_window, image_clignotant_ring_1
+    global image_clignotant_ring_1_window, image_clignotant_ring_1, root_color_to_value_anneau_1
     root_precedent.destroy()
     root_color_to_value_anneau_1 = Toplevel(root)
     root_color_to_value_anneau_1.title("De quelle couleur est le premier anneau de votre résistance ?")
@@ -809,10 +854,14 @@ def open_color_to_value_anneau_1(root_precedent):
     etape = 1
     clignotement(root_color_to_value_anneau_1, canvas_color_to_value_anneau_1, etape)
     spawn_selecteurs_part2(root_color_to_value_anneau_1, canvas_color_to_value_anneau_1, etape)
+    try:
+        root_color_to_value_anneau_1.protocol('WM_DELETE_WINDOW', reset)
+    except:
+        pass
     mainloop()
 
 def open_color_to_value_anneau_2(root_precedent):
-    global image_clignotant_ring_2_window, image_clignotant_ring_2
+    global image_clignotant_ring_2_window, image_clignotant_ring_2, root_color_to_value_anneau_2
     root_precedent.destroy()
     root_color_to_value_anneau_2 = Toplevel(root)
     root_color_to_value_anneau_2.title("De quelle couleur est le deuxième anneau de votre résistance ?")
@@ -860,10 +909,14 @@ def open_color_to_value_anneau_2(root_precedent):
     etape = 2
     clignotement(root_color_to_value_anneau_2, canvas_color_to_value_anneau_2, etape)
     spawn_selecteurs_part2(root_color_to_value_anneau_2, canvas_color_to_value_anneau_2, etape)
+    try:
+        root_color_to_value_anneau_2.protocol('WM_DELETE_WINDOW', reset)
+    except:
+        pass
     mainloop()
 
 def open_color_to_value_anneau_3(root_precedent):
-    global image_clignotant_ring_3_window, image_clignotant_ring_3
+    global image_clignotant_ring_3_window, image_clignotant_ring_3, root_color_to_value_anneau_3
     root_precedent.destroy()
     root_color_to_value_anneau_3 = Toplevel(root)
     root_color_to_value_anneau_3.title("De quelle couleur est le troisième anneau de votre résistance ?")
@@ -941,10 +994,14 @@ def open_color_to_value_anneau_3(root_precedent):
     etape = 3
     clignotement(root_color_to_value_anneau_3, canvas_color_to_value_anneau_3, etape)
     spawn_selecteurs_part2(root_color_to_value_anneau_3, canvas_color_to_value_anneau_3, etape)
+    try:
+        root_color_to_value_anneau_3.protocol('WM_DELETE_WINDOW', reset)
+    except:
+        pass
     mainloop()
 
 def open_color_to_value_anneau_4(root_precedent):
-    global image_clignotant_ring_4_window, image_clignotant_ring_4
+    global image_clignotant_ring_4_window, image_clignotant_ring_4, root_color_to_value_anneau_4
     root_precedent.destroy()
     root_color_to_value_anneau_4 = Toplevel(root)
     root_color_to_value_anneau_4.title("De quelle couleur est le quatrième anneau de votre résistance ?")
@@ -1052,10 +1109,14 @@ def open_color_to_value_anneau_4(root_precedent):
     etape = 4
     clignotement(root_color_to_value_anneau_4, canvas_color_to_value_anneau_4, etape)
     spawn_selecteurs_part2(root_color_to_value_anneau_4, canvas_color_to_value_anneau_4, etape)
+    try:
+        root_color_to_value_anneau_4.protocol('WM_DELETE_WINDOW', reset)
+    except:
+        pass
     mainloop()
 
 def open_color_to_value_anneau_5(root_precedent):
-    global image_clignotant_ring_5_window, image_clignotant_ring_5
+    global image_clignotant_ring_5_window, image_clignotant_ring_5, root_color_to_value_anneau_5
     root_precedent.destroy()
     root_color_to_value_anneau_5 = Toplevel(root)
     root_color_to_value_anneau_5.title("De quelle couleur est le cinquième anneau de votre résistance ?")
@@ -1196,10 +1257,14 @@ def open_color_to_value_anneau_5(root_precedent):
     etape = 5
     clignotement(root_color_to_value_anneau_5, canvas_color_to_value_anneau_5, etape)
     spawn_selecteurs_part2(root_color_to_value_anneau_5, canvas_color_to_value_anneau_5, etape)
+    try:
+        root_color_to_value_anneau_5.protocol('WM_DELETE_WINDOW', reset)
+    except:
+        pass
     mainloop()
 
 def open_color_to_value_anneau_6(root_precedent):
-    global image_clignotant_ring_6_window, image_clignotant_ring_6
+    global image_clignotant_ring_6_window, image_clignotant_ring_6, root_color_to_value_anneau_6
     root_precedent.destroy()
     root_color_to_value_anneau_6 = Toplevel(root)
     root_color_to_value_anneau_6.title("De quelle couleur est le sixième anneau de votre résistance ?")
@@ -1341,12 +1406,6 @@ def open_color_to_value_anneau_6(root_precedent):
     elif chiffre_5 == '±2%' :
         image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/red.png")
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
-    elif chiffre_5 == '±3%' :
-        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/orange.png")
-        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
-    elif chiffre_5 == '±4%' :
-        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/yellow.png")
-        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
     elif chiffre_5 == '±0.5%' :
         image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/green.png")
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
@@ -1355,9 +1414,6 @@ def open_color_to_value_anneau_6(root_precedent):
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
     elif chiffre_5 == '±0.10%' :
         image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/purple.png")
-        canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
-    elif chiffre_5 == '±0.05%' :
-        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/grey.png")
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
     elif chiffre_5 == '±5%' :
         image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/gold.png")
@@ -1370,6 +1426,10 @@ def open_color_to_value_anneau_6(root_precedent):
     etape = 6
     clignotement(root_color_to_value_anneau_6, canvas_color_to_value_anneau_6, etape)
     spawn_selecteurs_part2(root_color_to_value_anneau_6, canvas_color_to_value_anneau_6, etape)
+    try:
+        root_color_to_value_anneau_6.protocol('WM_DELETE_WINDOW', reset)
+    except:
+        pass
     mainloop()
 
 
@@ -1381,6 +1441,77 @@ button_color_to_value_window = canvas_accueil.create_window(560, 425, anchor='nw
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def open_color_to_value_result(root_precedent):
+    global root_color_to_value_result
+    root_precedent.destroy()
+    root_color_to_value_result = Toplevel(root)
+    root_color_to_value_result.title("Voici la valeur de votre résistance !")
+    root_color_to_value_result.geometry("1080x720")
+    root_color_to_value_result.minsize(1080, 720)
+    root_color_to_value_result.maxsize(1080, 720)
+    canvas_color_to_value_result = Canvas(root_color_to_value_result, width = 1080, height = 720)
+    canvas_color_to_value_result.pack(fill = "both", expand = True)
+    bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
+    canvas_color_to_value_result.create_image( 0, 0, image = bg, anchor='nw')
+    fin=canvas_color_to_value_result.create_text(540, 100, text=' Voici la valeur \n de votre résistance électrique : ', font=("Helvetica", 45), fill="WHITE", justify = CENTER)
+    ito=canvas_color_to_value_result.create_rectangle(canvas_color_to_value_result.bbox(fin),fill="#feb58a", width = 1, outline = 'BLACK')
+    canvas_color_to_value_result.tag_lower(ito,fin)
+    if chiffre_3 != None and chiffre_6 != None :
+        resultat = chiffre_1,chiffre_2,chiffre_3,chiffre_4, 'Ω',chiffre_5,chiffre_6
+    elif chiffre_3 == None and chiffre_6 != None :
+        resultat = chiffre_1,chiffre_2,chiffre_4, 'Ω',chiffre_5,chiffre_6
+    elif chiffre_3 != None and chiffre_6 == None :
+        resultat = chiffre_1,chiffre_2,chiffre_3,chiffre_4, 'Ω',chiffre_5
+    elif chiffre_3 == None and chiffre_6 == None :
+        resultat = chiffre_1,chiffre_2,chiffre_4, 'Ω',chiffre_5
+    abc=canvas_color_to_value_result.create_text(540, 450, text=resultat, font=("Helvetica", 62), fill="WHITE", justify = CENTER)
+    gui=canvas_color_to_value_result.create_rectangle(canvas_color_to_value_result.bbox(abc),fill="#feb58a", width = 1, outline = 'BLACK')
+    canvas_color_to_value_result.tag_lower(gui,abc)
+    try:
+        root_color_to_value_result.protocol('WM_DELETE_WINDOW', reset)
+    except:
+        pass
+    mainloop()
 
 
 
