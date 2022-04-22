@@ -1,30 +1,41 @@
 
+# Auteur : Romain MELLAZA
+# Date : 18-19-20-21-22/04/2022
+# Description : Logiciel codé en Python qui permet à l'utilisateur (via une interface graphique) d'obtenir les couleurs des anneaux d'une résitance
+# électrique et inversement.
 
+# Importation de modules externes :
 from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk
 
+# Je défini ma fenêtre parent que j'appellerai "root" (ce sera mon accueil) :
 root = Tk()
 
-root.title("Convertisseur valeurs/couleurs des résistances électriques par Romain MELLAZA")
-root.geometry("1080x720")
-root.minsize(1080, 720)
+# Je défini des paramètres à cette fenêtre :
+root.title("Convertisseur valeurs/couleurs des résistances électriques par Romain MELLAZA")     # Un titre
+root.geometry("1080x720")                                                                       # Un resolution d'affichage, ici HD
+root.minsize(1080, 720)                                                                         # Je bloque cette resolution, pour éviter que l'utilisateur ne redimmensionne n'importe comment.
 root.maxsize(1080, 720)
-root.iconbitmap(default='icon\LOGO_resistance.ico')
+root.iconbitmap(default='icon\LOGO_resistance.ico')                                             # Je défini un icon pour la fenêtre
 
 
+
+##############################################################################################################################################################################################################
+#                                                                                     ACCUEIL                                                                                                                #
+#                                                                                                                                                                                                            #
 bg = PhotoImage(file = "img\Background_IMAGE.png")
 canvas_accueil = Canvas( root, width = 1080, height = 720)
 canvas_accueil.pack(fill = "both", expand = True)
 canvas_accueil.create_image( 0, 0, image = bg, anchor = "nw")
 
 
-i=canvas_accueil.create_text(540.45, 137, text='Bienvenue dans le convertisseur\nde résistance électrique !', font=("Helvetica", 42), fill="white", justify = CENTER)
+i=canvas_accueil.create_text(540.45, 137, text=' Bienvenue dans le convertisseur \n de résistance électrique ! ', font=("Helvetica", 42), fill="white", justify = CENTER)
 r=canvas_accueil.create_rectangle(canvas_accueil.bbox(i),fill="#feb58a", width = 1)                                                            
 canvas_accueil.tag_lower(r,i)
 
 
-k=canvas_accueil.create_text(540.45, 310, text='Quelle conversion voulez-vous réaliser ?', font=("Helvetica", 35), fill="white")
+k=canvas_accueil.create_text(540.45, 310, text=' Quelle conversion voulez-vous réaliser ? ', font=("Helvetica", 35), fill="white")
 l=canvas_accueil.create_rectangle(canvas_accueil.bbox(k),fill="#feb58a", width = 1)
 canvas_accueil.tag_lower(l,k)
 
@@ -1441,46 +1452,6 @@ button_color_to_value_window = canvas_accueil.create_window(560, 425, anchor='nw
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def open_color_to_value_result(root_precedent):
     global root_color_to_value_result
     root_precedent.destroy()
@@ -1504,7 +1475,7 @@ def open_color_to_value_result(root_precedent):
         resultat = chiffre_1,chiffre_2,chiffre_3,chiffre_4, 'Ω',chiffre_5
     elif chiffre_3 == None and chiffre_6 == None :
         resultat = chiffre_1,chiffre_2,chiffre_4, 'Ω',chiffre_5
-    abc=canvas_color_to_value_result.create_text(540, 450, text=resultat, font=("Helvetica", 62), fill="WHITE", justify = CENTER)
+    abc=canvas_color_to_value_result.create_text(540, 450, text=resultat, font=("Helvetica", 50), fill="WHITE", justify = CENTER)
     gui=canvas_color_to_value_result.create_rectangle(canvas_color_to_value_result.bbox(abc),fill="#feb58a", width = 1, outline = 'BLACK')
     canvas_color_to_value_result.tag_lower(gui,abc)
     try:
@@ -1513,7 +1484,14 @@ def open_color_to_value_result(root_precedent):
         pass
     mainloop()
 
+def msg_remerciement():
+    messagebox.showinfo('MERCI !',"Merci d'avoir utilisé mon logiciel ! :)")
+    root.destroy()
 
+try:
+    root.protocol('WM_DELETE_WINDOW', msg_remerciement)
+except:
+    pass
 
 
 root.mainloop()
