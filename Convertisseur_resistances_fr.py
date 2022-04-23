@@ -23,7 +23,8 @@ root.iconbitmap(default='icon\LOGO_resistance.ico')                             
 
 count_window_open = 0           # Compteur qui permet au programme de savoir combien de fenêtre l'utilisateur a ouvert !
 
-valeur_anneau_1 = [             # Liste contenant toutes les valeurs possibles pour le premier anneau d'une resistance.
+# Constantes :
+VALEUR_ANNEAU_1 = [             # Liste contenant toutes les valeurs possibles pour le premier anneau d'une resistance.
     # 0 impossible              # Ici il s'agit donc du premier chiffre significatif.
     "1",
     "2",
@@ -36,7 +37,7 @@ valeur_anneau_1 = [             # Liste contenant toutes les valeurs possibles p
     "9"
 ]
 
-valeur_anneau_2 = [             # Liste contenant toutes les valeurs possibles pour le second anneau d'une resistance.
+VALEUR_ANNEAU_2 = [             # Liste contenant toutes les valeurs possibles pour le second anneau d'une resistance.
     "0",                        # Ici il s'agit donc du second chiffre significatif.
     "1",
     "2",
@@ -49,7 +50,7 @@ valeur_anneau_2 = [             # Liste contenant toutes les valeurs possibles p
     "9"
 ]
 
-valeur_anneau_3 = [           # Liste contenant toutes les valeurs possibles pour le troisième anneau d'une resistance.  
+VALEUR_ANNEAU_3 = [           # Liste contenant toutes les valeurs possibles pour le troisième anneau d'une resistance.  
     "0",                      # Ici il s'agit donc du troisième chiffre significatif.
     "1",
     "2",
@@ -63,7 +64,7 @@ valeur_anneau_3 = [           # Liste contenant toutes les valeurs possibles pou
     "Aucun" # Possibilité de ne pas avoir de 3ème chiffre significatif.
 ]
 
-valeur_multipli = [           # Liste contenant toutes les valeurs possibles pour le quatrième anneau d'une resistance.
+VALEUR_MULTIPLI = [           # Liste contenant toutes les valeurs possibles pour le quatrième anneau d'une resistance.
     "x1",                     # Ici il s'agit donc du multiplicateur.
     "x10",
     "x100",
@@ -78,7 +79,7 @@ valeur_multipli = [           # Liste contenant toutes les valeurs possibles pou
     "x0.01"
 ]
 
-valeur_tolerance = [        # Liste contenant toutes les valeurs possibles pour le cinquième anneau d'une resistance.
+VALEUR_TOLERANCE = [        # Liste contenant toutes les valeurs possibles pour le cinquième anneau d'une resistance.
     "±10%",                 # Ici il s'agit donc des valeurs de tolérance.
     "±5%",
     "±2%",
@@ -88,7 +89,7 @@ valeur_tolerance = [        # Liste contenant toutes les valeurs possibles pour 
     "±0.10%"
 ]
 
-valeur_temperature = [      # Liste contenant toutes les valeurs possibles pour le sixième anneau d'une resistance.
+VALEUR_TEMPERATURE = [      # Liste contenant toutes les valeurs possibles pour le sixième anneau d'une resistance.
     "250ppm/K",             # Ici il s'agit donc des coefficients de témpérature.
     "100ppm/K",
     "50ppm/K",
@@ -101,7 +102,7 @@ valeur_temperature = [      # Liste contenant toutes les valeurs possibles pour 
     "Aucun"  # Possibilité de ne pas avoir de coefficient de température indiqué.
 ]
 
-couleur_anneau_1 = [        # Liste contenant toutes les couleurs possibles pour le premier anneau d'une resistance.
+COULEUR_ANNEAU_1 = [        # Liste contenant toutes les couleurs possibles pour le premier anneau d'une resistance.
     "Marron",
     "Rouge",
     "Orange",
@@ -113,7 +114,7 @@ couleur_anneau_1 = [        # Liste contenant toutes les couleurs possibles pour
     "Blanc"
 ]
 
-couleur_anneau_2 = [        # Liste contenant toutes les couleurs possibles pour le deuxième anneau d'une resistance.
+COULEUR_ANNEAU_2 = [        # Liste contenant toutes les couleurs possibles pour le deuxième anneau d'une resistance.
     "Noir",     # Possibilité que le deuxième chiffre significatif soit égal à 0.
     "Marron",
     "Rouge",
@@ -126,7 +127,7 @@ couleur_anneau_2 = [        # Liste contenant toutes les couleurs possibles pour
     "Blanc"
 ]
 
-couleur_anneau_3 = [        # Liste contenant toutes les couleurs possibles pour le troisième anneau d'une resistance.
+COULEUR_ANNEAU_3 = [        # Liste contenant toutes les couleurs possibles pour le troisième anneau d'une resistance.
     "Noir",
     "Marron",
     "Rouge",
@@ -140,7 +141,7 @@ couleur_anneau_3 = [        # Liste contenant toutes les couleurs possibles pour
     "Il n'y en a pas !"   # Possibilité de ne pas avoir de 3ème chiffre significatif.
 ]
 
-couleur_anneau_4 = [        # Liste contenant toutes les couleurs possibles pour le quatrième anneau d'une resistance.
+COULEUR_ANNEAU_4 = [        # Liste contenant toutes les couleurs possibles pour le quatrième anneau d'une resistance.
     "Noir",
     "Marron",
     "Rouge",
@@ -155,7 +156,7 @@ couleur_anneau_4 = [        # Liste contenant toutes les couleurs possibles pour
     "Argent"
 ]
 
-couleur_anneau_5 = [        # Liste contenant toutes les couleurs possibles pour le cinquième anneau d'une resistance.
+COULEUR_ANNEAU_5 = [        # Liste contenant toutes les couleurs possibles pour le cinquième anneau d'une resistance.
     "Marron",
     "Rouge",
     "Vert",
@@ -165,7 +166,7 @@ couleur_anneau_5 = [        # Liste contenant toutes les couleurs possibles pour
     "Argent"
 ]
 
-couleur_anneau_6 = [        # Liste contenant toutes les couleurs possibles pour le sixième anneau d'une resistance.
+COULEUR_ANNEAU_6 = [        # Liste contenant toutes les couleurs possibles pour le sixième anneau d'une resistance.
     "Noir",
     "Marron",
     "Rouge",
@@ -463,16 +464,15 @@ def spawn_selecteurs(root_correspondant, canvas_correspondant):
     Fonction complexe qui affiche les différents sélecteurs de valeurs possible pour chaque anneaux sur la page !
     Elle admet donc en paramètres la racine ainsi que la toile pour savoir où afficher les sélecteurs.
     '''
-    global valeur_anneau_1, valeur_anneau_2, valeur_anneau_3, valeur_multipli, valeur_tolerance, valeur_temperature
 
     # Je défini la variable qui permet de recueillir le choix de l'utilisateur pour le premier chiffre significatif :
     anneau1 = StringVar() # Il s'agit d'une chaîne de caractères.
 
     # Je passe à la variable une valeur par défaut, je choisi que ce sera la première valeur de la liste correspondante :
-    anneau1.set(valeur_anneau_1[0])
+    anneau1.set(VALEUR_ANNEAU_1[0])
 
     # J'ai choisi d'utiliser des menus déroulant dans tout le logiciel pour éviter que l'utilisateur ne rentre n'importe quoi comme couleur ou valeur :
-    drop_chiffre_1 = OptionMenu(root_correspondant, anneau1, *valeur_anneau_1)
+    drop_chiffre_1 = OptionMenu(root_correspondant, anneau1, *VALEUR_ANNEAU_1)
 
     # J'affecte des attributs graphiques au menu :
     drop_chiffre_1.config(width = 10, font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
@@ -488,10 +488,10 @@ def spawn_selecteurs(root_correspondant, canvas_correspondant):
     anneau2 = StringVar() # Il s'agit d'une chaîne de caractères.
 
     # Je passe à la variable une valeur par défaut, je choisi que ce sera la première valeur de la liste correspondante :
-    anneau2.set(valeur_anneau_2[0])
+    anneau2.set(VALEUR_ANNEAU_2[0])
 
     # J'ai choisi d'utiliser des menus déroulant dans tout le logiciel pour éviter que l'utilisateur ne rentre n'importe quoi comme couleur ou valeur :
-    drop_chiffre_2 = OptionMenu(root_correspondant, anneau2, *valeur_anneau_2)
+    drop_chiffre_2 = OptionMenu(root_correspondant, anneau2, *VALEUR_ANNEAU_2)
 
     # J'affecte des attributs graphiques au menu :
     drop_chiffre_2.config(width = 10, font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
@@ -507,10 +507,10 @@ def spawn_selecteurs(root_correspondant, canvas_correspondant):
     anneau3 = StringVar() # Il s'agit d'une chaîne de caractères.
 
     # Je passe à la variable une valeur par défaut, je choisi que ce sera la onzième valeur de la liste correspondante :
-    anneau3.set(valeur_anneau_3[10])
+    anneau3.set(VALEUR_ANNEAU_3[10])
 
     # J'ai choisi d'utiliser des menus déroulant dans tout le logiciel pour éviter que l'utilisateur ne rentre n'importe quoi comme couleur ou valeur :
-    drop_chiffre_3 = OptionMenu(root_correspondant, anneau3, *valeur_anneau_3)
+    drop_chiffre_3 = OptionMenu(root_correspondant, anneau3, *VALEUR_ANNEAU_3)
 
     # J'affecte des attributs graphiques au menu :
     drop_chiffre_3.config(width = 10, font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
@@ -526,10 +526,10 @@ def spawn_selecteurs(root_correspondant, canvas_correspondant):
     anneau_multipli = StringVar() # Il s'agit d'une chaîne de caractères.
 
     # Je passe à la variable une valeur par défaut, je choisi que ce sera la première valeur de la liste correspondante :
-    anneau_multipli.set(valeur_multipli[0])
+    anneau_multipli.set(VALEUR_MULTIPLI[0])
 
     # J'ai choisi d'utiliser des menus déroulant dans tout le logiciel pour éviter que l'utilisateur ne rentre n'importe quoi comme couleur ou valeur :
-    drop_chiffre_multipli = OptionMenu(root_correspondant, anneau_multipli, *valeur_multipli)
+    drop_chiffre_multipli = OptionMenu(root_correspondant, anneau_multipli, *VALEUR_MULTIPLI)
 
     # J'affecte des attributs graphiques au menu :
     drop_chiffre_multipli.config(width = 10, font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
@@ -545,10 +545,10 @@ def spawn_selecteurs(root_correspondant, canvas_correspondant):
     anneau_tolerance = StringVar()  # Il s'agit d'une chaîne de caractères.
 
     # Je passe à la variable une valeur par défaut, je choisi que ce sera la première valeur de la liste correspondante :
-    anneau_tolerance.set(valeur_tolerance[0])
+    anneau_tolerance.set(VALEUR_TOLERANCE[0])
 
     # J'ai choisi d'utiliser des menus déroulant dans tout le logiciel pour éviter que l'utilisateur ne rentre n'importe quoi comme couleur ou valeur :
-    drop_chiffre_tolerance = OptionMenu(root_correspondant, anneau_tolerance, *valeur_tolerance)
+    drop_chiffre_tolerance = OptionMenu(root_correspondant, anneau_tolerance, *VALEUR_TOLERANCE)
 
     # J'affecte des attributs graphiques au menu :
     drop_chiffre_tolerance.config(width = 10, font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
@@ -564,10 +564,10 @@ def spawn_selecteurs(root_correspondant, canvas_correspondant):
     anneau_temperature = StringVar()  # Il s'agit d'une chaîne de caractères.
 
     # Je passe à la variable une valeur par défaut, je choisi que ce sera la dixième valeur de la liste correspondante :
-    anneau_temperature.set(valeur_temperature[9])
+    anneau_temperature.set(VALEUR_TEMPERATURE[9])
 
     # J'ai choisi d'utiliser des menus déroulant dans tout le logiciel pour éviter que l'utilisateur ne rentre n'importe quoi comme couleur ou valeur :
-    drop_chiffre_temperature = OptionMenu(root_correspondant, anneau_temperature, *valeur_temperature)
+    drop_chiffre_temperature = OptionMenu(root_correspondant, anneau_temperature, *VALEUR_TEMPERATURE)
 
     # J'affecte des attributs graphiques au menu :
     drop_chiffre_temperature.config(width = 10, font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
@@ -642,10 +642,10 @@ def color_converter_number_1_to_3(root_correspondant, ring, step):
             chiffre_3 = 0
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = valeur_multipli[0]
+            chiffre_4 = VALEUR_MULTIPLI[0]
             open_color_to_value_anneau_5(root_correspondant)
         elif step == 6 :
-            chiffre_6 = valeur_temperature[0]
+            chiffre_6 = VALEUR_TEMPERATURE[0]
             open_color_to_value_result(root_correspondant)
 
     if ring.get() == 'Marron' :
@@ -659,13 +659,13 @@ def color_converter_number_1_to_3(root_correspondant, ring, step):
             chiffre_3 = 1
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = valeur_multipli[1]
+            chiffre_4 = VALEUR_MULTIPLI[1]
             open_color_to_value_anneau_5(root_correspondant)
         elif step == 5 :
-            chiffre_5 = valeur_tolerance[3]
+            chiffre_5 = VALEUR_TOLERANCE[3]
             open_color_to_value_anneau_6(root_correspondant)
         elif step == 6 :
-            chiffre_6 = valeur_temperature[1]
+            chiffre_6 = VALEUR_TEMPERATURE[1]
             open_color_to_value_result(root_correspondant)
     if ring.get() == 'Rouge' :
         if step == 1 :
@@ -678,13 +678,13 @@ def color_converter_number_1_to_3(root_correspondant, ring, step):
             chiffre_3 = 2
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = valeur_multipli[2]
+            chiffre_4 = VALEUR_MULTIPLI[2]
             open_color_to_value_anneau_5(root_correspondant)
         elif step == 5 :
-            chiffre_5 = valeur_tolerance[2]
+            chiffre_5 = VALEUR_TOLERANCE[2]
             open_color_to_value_anneau_6(root_correspondant)
         elif step == 6 :
-            chiffre_6 = valeur_temperature[2]
+            chiffre_6 = VALEUR_TEMPERATURE[2]
             open_color_to_value_result(root_correspondant)
     if ring.get() == 'Orange' :
         if step == 1 :
@@ -697,10 +697,10 @@ def color_converter_number_1_to_3(root_correspondant, ring, step):
             chiffre_3 = 3
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = valeur_multipli[3]
+            chiffre_4 = VALEUR_MULTIPLI[3]
             open_color_to_value_anneau_5(root_correspondant)
         elif step == 6 :
-            chiffre_6 = valeur_temperature[5]
+            chiffre_6 = VALEUR_TEMPERATURE[5]
             open_color_to_value_result(root_correspondant)
     if ring.get() == 'Jaune' :
         if step == 1 :
@@ -713,10 +713,10 @@ def color_converter_number_1_to_3(root_correspondant, ring, step):
             chiffre_3 = 4
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = valeur_multipli[4]
+            chiffre_4 = VALEUR_MULTIPLI[4]
             open_color_to_value_anneau_5(root_correspondant)
         elif step == 6 :
-            chiffre_6 = valeur_temperature[3]
+            chiffre_6 = VALEUR_TEMPERATURE[3]
             open_color_to_value_result(root_correspondant)
     if ring.get() == 'Vert' :
         if step == 1 :
@@ -729,10 +729,10 @@ def color_converter_number_1_to_3(root_correspondant, ring, step):
             chiffre_3 = 5
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = valeur_multipli[5]
+            chiffre_4 = VALEUR_MULTIPLI[5]
             open_color_to_value_anneau_5(root_correspondant)
         elif step == 5 :
-            chiffre_5 = valeur_tolerance[4]
+            chiffre_5 = VALEUR_TOLERANCE[4]
             open_color_to_value_anneau_6(root_correspondant)
     if ring.get() == 'Bleu' :
         if step == 1 :
@@ -745,13 +745,13 @@ def color_converter_number_1_to_3(root_correspondant, ring, step):
             chiffre_3 = 6
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = valeur_multipli[6]
+            chiffre_4 = VALEUR_MULTIPLI[6]
             open_color_to_value_anneau_5(root_correspondant)
         elif step == 5 :
-            chiffre_5 = valeur_tolerance[5]
+            chiffre_5 = VALEUR_TOLERANCE[5]
             open_color_to_value_anneau_6(root_correspondant)
         elif step == 6 :
-            chiffre_6 = valeur_temperature[6]
+            chiffre_6 = VALEUR_TEMPERATURE[6]
             open_color_to_value_result(root_correspondant)
     if ring.get() == 'Violet' :
         if step == 1 :
@@ -764,13 +764,13 @@ def color_converter_number_1_to_3(root_correspondant, ring, step):
             chiffre_3 = 7
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = valeur_multipli[7]
+            chiffre_4 = VALEUR_MULTIPLI[7]
             open_color_to_value_anneau_5(root_correspondant)
         elif step == 5 :
-            chiffre_5 = valeur_tolerance[6]
+            chiffre_5 = VALEUR_TOLERANCE[6]
             open_color_to_value_anneau_6(root_correspondant)
         elif step == 6 :
-            chiffre_6 = valeur_temperature[7]
+            chiffre_6 = VALEUR_TEMPERATURE[7]
             open_color_to_value_result(root_correspondant)
     if ring.get() == 'Gris' :
         if step == 1 :
@@ -783,10 +783,10 @@ def color_converter_number_1_to_3(root_correspondant, ring, step):
             chiffre_3 = 8
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = valeur_multipli[8]
+            chiffre_4 = VALEUR_MULTIPLI[8]
             open_color_to_value_anneau_5(root_correspondant)
         elif step == 6 :
-            chiffre_6 = valeur_temperature[8]
+            chiffre_6 = VALEUR_TEMPERATURE[8]
             open_color_to_value_result(root_correspondant)
     if ring.get() == 'Blanc' :
         if step == 1 :
@@ -799,21 +799,21 @@ def color_converter_number_1_to_3(root_correspondant, ring, step):
             chiffre_3 = 9
             open_color_to_value_anneau_4(root_correspondant)
         elif step == 4 :
-            chiffre_4 = valeur_multipli[9]
+            chiffre_4 = VALEUR_MULTIPLI[9]
             open_color_to_value_anneau_5(root_correspondant)  
     if ring.get() == 'Or' :
         if step == 4 :
-            chiffre_4 = valeur_multipli[10]
+            chiffre_4 = VALEUR_MULTIPLI[10]
             open_color_to_value_anneau_5(root_correspondant)
         elif step == 5 :
-            chiffre_5 = valeur_tolerance[1]
+            chiffre_5 = VALEUR_TOLERANCE[1]
             open_color_to_value_anneau_6(root_correspondant)
     if ring.get() == 'Argent' :
         if step == 4 :
-            chiffre_4 = valeur_multipli[11]
+            chiffre_4 = VALEUR_MULTIPLI[11]
             open_color_to_value_anneau_5(root_correspondant) 
         elif step == 5 :
-            chiffre_5 = valeur_tolerance[0]
+            chiffre_5 = VALEUR_TOLERANCE[0]
             open_color_to_value_anneau_6(root_correspondant)
     if ring.get() == "Il n'y en a pas !" :
         if step == 3 :
@@ -834,8 +834,8 @@ def spawn_selecteurs_part2(root_correspondant, canvas_correspondant, step):
     '''
     if step == 1 :
         anneau1_part2 = StringVar()
-        anneau1_part2.set(couleur_anneau_1[0])
-        drop_couleur_1 = OptionMenu(root_correspondant, anneau1_part2, *couleur_anneau_1)
+        anneau1_part2.set(COULEUR_ANNEAU_1[0])
+        drop_couleur_1 = OptionMenu(root_correspondant, anneau1_part2, *COULEUR_ANNEAU_1)
         drop_couleur_1.config(width = 10, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
         drop_couleur_1["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
         canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_1)
@@ -843,8 +843,8 @@ def spawn_selecteurs_part2(root_correspondant, canvas_correspondant, step):
         canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_1)
     if step == 2 :
         anneau2_part2 = StringVar()
-        anneau2_part2.set(couleur_anneau_2[0])
-        drop_couleur_2 = OptionMenu(root_correspondant, anneau2_part2, *couleur_anneau_2)
+        anneau2_part2.set(COULEUR_ANNEAU_2[0])
+        drop_couleur_2 = OptionMenu(root_correspondant, anneau2_part2, *COULEUR_ANNEAU_2)
         drop_couleur_2.config(width = 10, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
         drop_couleur_2["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
         canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_2)
@@ -852,8 +852,8 @@ def spawn_selecteurs_part2(root_correspondant, canvas_correspondant, step):
         canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_2)
     if step == 3 :
         anneau3_part2 = StringVar()
-        anneau3_part2.set(couleur_anneau_3[10])
-        drop_couleur_3 = OptionMenu(root_correspondant, anneau3_part2, *couleur_anneau_3)
+        anneau3_part2.set(COULEUR_ANNEAU_3[10])
+        drop_couleur_3 = OptionMenu(root_correspondant, anneau3_part2, *COULEUR_ANNEAU_3)
         drop_couleur_3.config(width = 14, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
         drop_couleur_3["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
         canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_3)
@@ -861,8 +861,8 @@ def spawn_selecteurs_part2(root_correspondant, canvas_correspondant, step):
         canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_3)
     if step == 4 :
         anneau4_part2 = StringVar()
-        anneau4_part2.set(couleur_anneau_4[10])
-        drop_couleur_4 = OptionMenu(root_correspondant, anneau4_part2, *couleur_anneau_4)
+        anneau4_part2.set(COULEUR_ANNEAU_4[10])
+        drop_couleur_4 = OptionMenu(root_correspondant, anneau4_part2, *COULEUR_ANNEAU_4)
         drop_couleur_4.config(width = 10, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
         drop_couleur_4["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
         canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_4)
@@ -870,8 +870,8 @@ def spawn_selecteurs_part2(root_correspondant, canvas_correspondant, step):
         canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_4)
     if step == 5 :
         anneau5_part2 = StringVar()
-        anneau5_part2.set(couleur_anneau_5[6])
-        drop_couleur_5 = OptionMenu(root_correspondant, anneau5_part2, *couleur_anneau_5)
+        anneau5_part2.set(COULEUR_ANNEAU_5[6])
+        drop_couleur_5 = OptionMenu(root_correspondant, anneau5_part2, *COULEUR_ANNEAU_5)
         drop_couleur_5.config(width = 10, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
         drop_couleur_5["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
         canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_5)
@@ -879,8 +879,8 @@ def spawn_selecteurs_part2(root_correspondant, canvas_correspondant, step):
         canvas_correspondant.create_window(575, 192, anchor='nw', window=button_validation_couleur_5)
     if step == 6 :
         anneau6_part2 = StringVar()
-        anneau6_part2.set(couleur_anneau_6[0])
-        drop_couleur_6 = OptionMenu(root_correspondant, anneau6_part2, *couleur_anneau_6)
+        anneau6_part2.set(COULEUR_ANNEAU_6[0])
+        drop_couleur_6 = OptionMenu(root_correspondant, anneau6_part2, *COULEUR_ANNEAU_6)
         drop_couleur_6.config(width = 14, font=("Helvetica", 25), fg ='white', bg="#feb58a", activebackground="#feb58a", activeforeground = 'white')
         drop_couleur_6["menu"].config(font=("Helvetica", 18), fg ='black', bg="#feb58a", activebackground="#feb58a")
         canvas_correspondant.create_window(220, 200, anchor='nw', window=drop_couleur_6)
