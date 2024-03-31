@@ -15,7 +15,7 @@ Dans ce mode d'utilisation, l'utilisateur qui dispose d'une résistance en main 
 ![](https://github.com/4strium/Electrical-Resistance-Converter/blob/main/pres/mode2_bis.png?raw=true)
 
 # Utilisation
-Le logiciel est complètement portable, en effet il s'agit d'un unique exécutable que vous pouvez télécharger : [**EN CLIQUANT ICI**](). 
+Le logiciel est complètement portable, en effet il s'agit d'un unique exécutable que vous pouvez télécharger : [**EN CLIQUANT ICI**](https://github.com/4strium/Electrical-Resistance-Converter/releases/download/v1.0.0/Convertisseur.Resistances.exe). 
 
 *Aucune dépendance et aucun pré-requis : vous pouvez l'exécuter où bon vous semble !*
 
