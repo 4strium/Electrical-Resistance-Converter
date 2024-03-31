@@ -1,18 +1,18 @@
 # ⚡ Electrical Resistance Converter
  
-Ce convertisseur permet aux initiés de même qu'aux experts en électronique de connaître simplement et efficacement la valeur d'une résistance électrique en fonction des anneaux qui enrobent sa surface, et inversement, ils peuvent savoir à quoi ressemble la résistance qu'il recherche en connaîssant sa valeur exacte. Il n'est plus nécessaire de se procurer un multimètre pour effectuer ce type de mesure.
+Ce convertisseur permet aux initiés de même qu'aux experts en électronique de connaître simplement et efficacement la valeur d'une résistance électrique en fonction des anneaux qui enrobent sa surface, et inversement, ils peuvent savoir à quoi ressemble la résistance qu'ils recherchent en connaîssant sa valeur exacte. Il n'est plus nécessaire de se procurer un multimètre pour effectuer ce type de mesure.
 
 Il y a par conséquent deux modes d'utilisation :
 ## Valeur → Couleur 
-![]()
+![](https://github.com/4strium/Electrical-Resistance-Converter/blob/main/pres/mode1.png?raw=true)
 Comme vous pouvez le voir ci-dessus, l'utilisateur saisit les trois chiffres significatifs, le multiplicateur, la tolérance ainsi que le coefficient de température afin d'obtenir in fine la représentation de la résistance qui dipose des anneaux de couleurs correspondantes.
 
 ## Couleur → Valeur
-![]()
+![](https://github.com/4strium/Electrical-Resistance-Converter/blob/main/pres/mode2.png?raw=true)
 Dans ce mode d'utilisation, l'utilisateur qui dispose d'une résistance en main peut renseigner anneau par anneau sa couleur afin d'obtenir la valeur totale correspondante.
 
 ### Résultat 
-![]()
+![](https://github.com/4strium/Electrical-Resistance-Converter/blob/main/pres/mode2_bis.png?raw=true)
 
 # Utilisation
 Le logiciel est complètement portable, en effet il s'agit d'un unique exécutable que vous pouvez télécharger : [**EN CLIQUANT ICI**](). 
