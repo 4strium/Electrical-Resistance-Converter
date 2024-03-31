@@ -8,6 +8,13 @@
 from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk
+import sys
+import os
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 
 # Je défini ma fenêtre parent que j'appellerai "root" (ce sera mon accueil) :
 root = Tk()
@@ -17,7 +24,7 @@ root.title("Convertisseur valeurs/couleurs des résistances électriques par Rom
 root.geometry("1080x720")                                                                       # Un resolution d'affichage, ici HD
 root.minsize(1080, 720)                                                                         # Je bloque cette resolution, pour éviter que l'utilisateur ne redimmensionne n'importe comment.
 root.maxsize(1080, 720)
-root.iconbitmap(default='icon\LOGO_resistance.ico')                                             # Je défini un icon pour la fenêtre
+root.iconbitmap(default=resource_path('icon\LOGO_resistance.ico'))                                             # Je défini un icon pour la fenêtre
 
 # Je défini des variables essentielles avec leurs valeurs par défaut :
 
@@ -183,7 +190,7 @@ COULEUR_ANNEAU_6 = [        # Liste contenant toutes les couleurs possibles pour
 #                                                                                                                                                                                                            #
 
 # J'importe et j'affiche une image de fond pour mon accueil :
-bg = PhotoImage(file = "img\Background_IMAGE.png")
+bg = PhotoImage(file = resource_path("img\Background_IMAGE.png"))
 canvas_accueil = Canvas( root, width = 1080, height = 720)
 canvas_accueil.pack(fill = "both", expand = True)
 canvas_accueil.create_image( 0, 0, image = bg, anchor = "nw")
@@ -213,33 +220,33 @@ def image_converter(root_correspondant, canvas_correspondant, ring1, ring2, ring
     global flèche_temporaire_1, flèche_temporaire_2
 
     # J'affiche mon image de resistance vide :
-    image_resistance_vide = ImageTk.PhotoImage(file = "img/blank_resistance.png")
+    image_resistance_vide = ImageTk.PhotoImage(file = resource_path("img/blank_resistance.png"))
     canvas_correspondant.create_image(50, 170, image = image_resistance_vide, anchor='nw')
 
     # J'affiche une flèche allant du sélecteur du premier chiffre significatif à l'anneau correspondant :
-    image_flèche_1 = ImageTk.PhotoImage(file = "img/arrows/first.png")
+    image_flèche_1 = ImageTk.PhotoImage(file = resource_path("img/first.png"))
     canvas_correspondant.create_image(80, 148, image = image_flèche_1, anchor='nw')
 
     # J'affiche une flèche allant du sélecteur du second chiffre significatif à l'anneau correspondant :
-    image_flèche_2 = ImageTk.PhotoImage(file = "img/arrows/second.png")
+    image_flèche_2 = ImageTk.PhotoImage(file = resource_path("img/second.png"))
     canvas_correspondant.create_image(306, 155, image = image_flèche_2, anchor='nw')
 
     # J'affiche une flèche allant du sélecteur du multiplicateur à l'anneau correspondant :
-    image_flèche_4 = ImageTk.PhotoImage(file = "img/arrows/fourth.png")
+    image_flèche_4 = ImageTk.PhotoImage(file = resource_path("img/fourth.png"))
     canvas_correspondant.create_image(420, 147, image = image_flèche_4, anchor='nw')
 
     # J'affiche une flèche allant du sélecteur de tolérance à l'anneau correspondant :
-    image_flèche_5 = ImageTk.PhotoImage(file = "img/arrows/five.png")
+    image_flèche_5 = ImageTk.PhotoImage(file = resource_path("img/five.png"))
     canvas_correspondant.create_image(540, 146, image = image_flèche_5, anchor='nw')
 
     # J'affiche une flèche allant du sélecteur du troisième chiffre significatif à l'anneau correspondant, SEULEMENT si il y en a un :
     if ring3.get() != 'Aucun' : 
         try : 
             canvas_correspondant.delete(flèche_temporaire_1)
-            image_flèche_3 = ImageTk.PhotoImage(file = "img/arrows/third.png")
+            image_flèche_3 = ImageTk.PhotoImage(file = resource_path("img/third.png"))
             flèche_temporaire_1 = canvas_correspondant.create_image(368, 153, image = image_flèche_3, anchor='nw')
         except : 
-            image_flèche_3 = ImageTk.PhotoImage(file = "img/arrows/third.png")
+            image_flèche_3 = ImageTk.PhotoImage(file = resource_path("img/third.png"))
             flèche_temporaire_1 = canvas_correspondant.create_image(368, 153, image = image_flèche_3, anchor='nw')
     else :
         # Sinon je supprime la flèche précédente :
@@ -252,10 +259,10 @@ def image_converter(root_correspondant, canvas_correspondant, ring1, ring2, ring
     if ring6.get() != 'Aucun' :
         try :
             canvas_correspondant.delete(flèche_temporaire_2)
-            image_flèche_6 = ImageTk.PhotoImage(file = "img/arrows/six.png")
+            image_flèche_6 = ImageTk.PhotoImage(file = resource_path("img/six.png"))
             flèche_temporaire_2 = canvas_correspondant.create_image(600, 450, image = image_flèche_6, anchor='nw')
         except :
-            image_flèche_6 = ImageTk.PhotoImage(file = "img/arrows/six.png")
+            image_flèche_6 = ImageTk.PhotoImage(file = resource_path("img/six.png"))
             flèche_temporaire_2 = canvas_correspondant.create_image(600, 450, image = image_flèche_6, anchor='nw')
     else :
         # Sinon je supprime la flèche précédente :
@@ -268,185 +275,185 @@ def image_converter(root_correspondant, canvas_correspondant, ring1, ring2, ring
 
     # En fonction de ce que l'utilisateur a sélectionné comme valeur pour le premier chiffre significatif j'affiche l'image de couleur correspondante :
     if ring1.get() == '1':
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/brown.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/brown1.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
     elif ring1.get() == '2':
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/red.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/red1.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
     elif ring1.get() == '3':
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/orange.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/orange1.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
     elif ring1.get() == '4':
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/yellow.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/yellow1.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
     elif ring1.get() == '5':
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/green.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/green1.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
     elif ring1.get() == '6':
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/blue.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/blue1.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
     elif ring1.get() == '7':
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/purple.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/purple1.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
     elif ring1.get() == '8':
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/grey.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/grey1.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
     elif ring1.get() == '9':
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/white.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/white1.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau1, anchor='nw')
     
     # En fonction de ce que l'utilisateur a sélectionné comme valeur pour le second chiffre significatif j'affiche l'image de couleur correspondante :
     if ring2.get() == '0':
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/black.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/black2.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
     elif ring2.get() == '1':
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/brown.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/brown2.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
     elif ring2.get() == '2':
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/red.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/red2.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
     elif ring2.get() == '3':
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/orange.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/orange2.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
     elif ring2.get() == '4':
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/yellow.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/yellow2.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
     elif ring2.get() == '5':
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/green.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/green2.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
     elif ring2.get() == '6':
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/blue.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/blue2.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
     elif ring2.get() == '7':
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/purple.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/purple2.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
     elif ring2.get() == '8':
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/grey.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/grey2.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
     elif ring2.get() == '9':
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/white.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/white2.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau2, anchor='nw')
 
     # En fonction de ce que l'utilisateur a sélectionné comme valeur pour le troisième chiffre significatif j'affiche l'image de couleur correspondante :
     if ring3.get() == '0' :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/black.png")
-        canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/black3.png"))
+        canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw') 
     elif ring3.get() == '1' :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/brown.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/brown3.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
     elif ring3.get() == '2' :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/red.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/red3.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
     elif ring3.get() == '3' :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/orange.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/orange3.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
     elif ring3.get() == '4' :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/yellow.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/yellow3.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
     elif ring3.get() == '5' :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/green.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/green3.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
     elif ring3.get() == '6' :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/blue.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/blue3.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
     elif ring3.get() == '7' :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/purple.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/purple3.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
     elif ring3.get() == '8' :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/grey.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/grey3.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
     elif ring3.get() == '9' :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/white.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/white3.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau3, anchor='nw')
     
     # En fonction de ce que l'utilisateur a sélectionné comme valeur pour le multiplicateur j'affiche l'image de couleur correspondante :
     if ring4.get() == 'x1' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/black.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/black4.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
     elif ring4.get() == 'x10' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/brown.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/brown4.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
     elif ring4.get() == 'x100' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/red.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/red4.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
     elif ring4.get() == 'x1k' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/orange.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/orange4.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
     elif ring4.get() == 'x10k' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/yellow.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/yellow4.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
     elif ring4.get() == 'x100k' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/green.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/green4.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
     elif ring4.get() == 'x1M' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/blue.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/blue4.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
     elif ring4.get() == 'x10M' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/purple.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/purple4.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
     elif ring4.get() == 'x100M' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/grey.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/grey4.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
     elif ring4.get() == 'x1G' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/white.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/white4.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
     elif ring4.get() == 'x0.1' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/gold.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/gold4.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
     elif ring4.get() == 'x0.01' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/silver.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/silver4.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau4, anchor='nw')
     
     # En fonction de ce que l'utilisateur a sélectionné comme valeur pour la tolérance j'affiche l'image de couleur correspondante :
     if ring5.get() == '±10%' :
-        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/silver.png")
+        image_anneau5 = ImageTk.PhotoImage(file = resource_path("img/silver5.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau5, anchor='nw')
     elif ring5.get() == '±5%' :
-        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/gold.png")
+        image_anneau5 = ImageTk.PhotoImage(file = resource_path("img/gold5.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau5, anchor='nw')
     elif ring5.get() == '±1%' :
-        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/brown.png")
+        image_anneau5 = ImageTk.PhotoImage(file = resource_path("img/brown5.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau5, anchor='nw')
     elif ring5.get() == '±2%' :
-        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/red.png")
+        image_anneau5 = ImageTk.PhotoImage(file = resource_path("img/red5.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau5, anchor='nw')
     elif ring5.get() == '±0.5%' :
-        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/green.png")
+        image_anneau5 = ImageTk.PhotoImage(file = resource_path("img/green5.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau5, anchor='nw')
     elif ring5.get() == '±0.25%' :
-        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/blue.png")
+        image_anneau5 = ImageTk.PhotoImage(file = resource_path("img/blue5.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau5, anchor='nw')
     elif ring5.get() == '±0.10%' :
-        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/purple.png")
+        image_anneau5 = ImageTk.PhotoImage(file = resource_path("img/purple5.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau5, anchor='nw')
 
     # En fonction de ce que l'utilisateur a sélectionné comme valeur pour le premier chiffre significatif j'affiche l'image de couleur correspondante :
     if ring6.get() == '250ppm/K' :
-        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/black.png")
+        image_anneau6 = ImageTk.PhotoImage(file = resource_path("img/black6.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
     elif ring6.get() == '100ppm/K' :
-        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/brown.png")
+        image_anneau6 = ImageTk.PhotoImage(file = resource_path("img/brown6.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
     elif ring6.get() == '50ppm/K' :
-        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/red.png")
+        image_anneau6 = ImageTk.PhotoImage(file = resource_path("img/red6.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
     elif ring6.get() == '25ppm/K' :
-        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/yellow.png")
+        image_anneau6 = ImageTk.PhotoImage(file = resource_path("img/yellow6.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
     elif ring6.get() == '20ppm/K' :
-        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/green.png")
+        image_anneau6 = ImageTk.PhotoImage(file = resource_path("img/green6.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
     elif ring6.get() == '15ppm/K' :
-        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/orange.png")
+        image_anneau6 = ImageTk.PhotoImage(file = resource_path("img/orange6.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
     elif ring6.get() == '10ppm/K' :
-        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/blue.png")
+        image_anneau6 = ImageTk.PhotoImage(file = resource_path("img/blue6.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
     elif ring6.get() == '5ppm/K' :
-        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/purple.png")
+        image_anneau6 = ImageTk.PhotoImage(file = resource_path("img/purple6.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
     elif ring6.get() == '1ppm/K' :
-        image_anneau6 = ImageTk.PhotoImage(file = "img/anneau_6/grey.png")
+        image_anneau6 = ImageTk.PhotoImage(file = resource_path("img/grey6.png"))
         canvas_correspondant.create_image( 50, 170, image = image_anneau6, anchor='nw')
 
     # Ces lignes de codes permettent au programme d'actionner la fonction de réinitialisation des variables si il reçoit l'information que l'utilisateur essaie de fermer la fenêtre de conversion :
@@ -605,7 +612,7 @@ def open_value_to_color():
         root_value_to_color.maxsize(1080, 720)
         canvas_value_to_color = Canvas( root_value_to_color, width = 1080, height = 720)
         canvas_value_to_color.pack(fill = "both", expand = True)
-        bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
+        bg = ImageTk.PhotoImage(file = resource_path("img\Background_IMAGE.png"))
         canvas_value_to_color.create_image( 0, 0, image = bg, anchor='nw')
         count_window_open += 1
         spawn_selecteurs(root_value_to_color, canvas_value_to_color)
@@ -893,7 +900,7 @@ def spawn_selecteurs_part2(root_correspondant, canvas_correspondant, step):
 
 def clignotement(root_correspondant, canvas_correspondant, step_light):
     '''
-    Fonction qui permet de faire clignoter un rond rouge pour indiquer l'anneau que l'utilisateur doit regarder dans la vraie vie.
+    Fonction qui permet de faire clignoter un rond rouge pour indiquer l'anneau que l'utilisateur doit regarder sur la résistance qu'il a en main.
     Cette fonction est couplée au fonction d'affichage et de supression que j'alterne à un certain rythme (500ms) afin de produire l'effet de clignotement.
     '''
     count = 0               # Définition du compteur de la boucle.
@@ -960,7 +967,7 @@ def open_color_to_value():
         root_color_to_value.maxsize(1080, 720)
         canvas_color_to_value = Canvas( root_color_to_value, width = 1080, height = 720)
         canvas_color_to_value.pack(fill = "both", expand = True)
-        bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
+        bg = ImageTk.PhotoImage(file = resource_path("img\Background_IMAGE.png"))
         canvas_color_to_value.create_image( 0, 0, image = bg, anchor='nw')
         count_window_open += 1
         tu=canvas_color_to_value.create_text(540, 150, text=' Prenez la resistance dans votre main. \n\n Vous allez devoir répondre à quelques questions \n pour déterminer la valeur de celle-ci ! ', font=("Helvetica", 35), fill="WHITE", justify = CENTER)
@@ -996,7 +1003,7 @@ def open_color_to_value_anneau_1(root_precedent):
     # Création de la toile correspondante et affichage de l'image de fond dessus :
     canvas_color_to_value_anneau_1 = Canvas( root_color_to_value_anneau_1, width = 1080, height = 720)
     canvas_color_to_value_anneau_1.pack(fill = "both", expand = True)
-    bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
+    bg = ImageTk.PhotoImage(file = resource_path("img\Background_IMAGE.png"))
     canvas_color_to_value_anneau_1.create_image( 0, 0, image = bg, anchor='nw')
 
     # Affichage de la question pour l'utilisateur :
@@ -1005,11 +1012,11 @@ def open_color_to_value_anneau_1(root_precedent):
     canvas_color_to_value_anneau_1.tag_lower(vz,tu)
 
     # Affichage de l'image de la résistance vide :
-    image_resistance_vide = ImageTk.PhotoImage(file = "img/blank_resistance.png")
+    image_resistance_vide = ImageTk.PhotoImage(file = resource_path("img/blank_resistance.png"))
     canvas_color_to_value_anneau_1.create_image(145, 170, image = image_resistance_vide, anchor='nw')
 
     # Affichage de l'image du rond rouge clignotant que je vais passer à la fonction de clignotement que j'ai créé pour qu'elle fasse clignoter l'image :
-    image_clignotant_ring_1 = ImageTk.PhotoImage(file = "img/anneau_1/clignotant.png")
+    image_clignotant_ring_1 = ImageTk.PhotoImage(file = resource_path("img/clignotant1.png"))
     image_clignotant_ring_1_window = canvas_color_to_value_anneau_1.create_image(145, 170, image = image_clignotant_ring_1, anchor='nw')
     etape = 1   # Nous sommes au premier anneau, donc à la première étape !
     clignotement(root_color_to_value_anneau_1, canvas_color_to_value_anneau_1, etape)
@@ -1047,7 +1054,7 @@ def open_color_to_value_anneau_2(root_precedent):
     # Création de la toile correspondante et affichage de l'image de fond dessus :
     canvas_color_to_value_anneau_2 = Canvas(root_color_to_value_anneau_2, width = 1080, height = 720)
     canvas_color_to_value_anneau_2.pack(fill = "both", expand = True)
-    bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
+    bg = ImageTk.PhotoImage(file = resource_path("img\Background_IMAGE.png"))
     canvas_color_to_value_anneau_2.create_image( 0, 0, image = bg, anchor='nw')
 
     # Affichage de la question pour l'utilisateur :
@@ -1056,41 +1063,41 @@ def open_color_to_value_anneau_2(root_precedent):
     canvas_color_to_value_anneau_2.tag_lower(vz,tu)
 
     # Affichage de l'image de la résistance vide :
-    image_resistance_vide = ImageTk.PhotoImage(file = "img/blank_resistance.png")
+    image_resistance_vide = ImageTk.PhotoImage(file = resource_path("img/blank_resistance.png"))
     canvas_color_to_value_anneau_2.create_image(145, 170, image = image_resistance_vide, anchor='nw')
 
     # Dans les structures conditionnelles qui suivent, en gros j'affiche l'image du premier anneau,
     # avec la bonnne couleur choisie par l'utilisateur à la question précédente !
     if chiffre_1 == 1 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/brown.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/brown1.png"))
         canvas_color_to_value_anneau_2.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 2 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/red.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/red1.png"))
         canvas_color_to_value_anneau_2.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 3 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/orange.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/orange1.png"))
         canvas_color_to_value_anneau_2.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 4 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/yellow.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/yellow1.png"))
         canvas_color_to_value_anneau_2.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 5 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/green.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/green1.png"))
         canvas_color_to_value_anneau_2.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 6 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/blue.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/blue1.png"))
         canvas_color_to_value_anneau_2.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 7 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/purple.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/purple1.png"))
         canvas_color_to_value_anneau_2.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 8 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/grey.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/grey1.png"))
         canvas_color_to_value_anneau_2.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 9 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/white.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/white1.png"))
         canvas_color_to_value_anneau_2.create_image(148, 170, image = image_anneau1, anchor='nw')
 
     # Affichage de l'image du rond rouge clignotant que je vais passer à la fonction de clignotement que j'ai créé pour qu'elle fasse clignoter l'image :    
-    image_clignotant_ring_2 = ImageTk.PhotoImage(file = "img/anneau_2/clignotant.png")
+    image_clignotant_ring_2 = ImageTk.PhotoImage(file = resource_path("img/clignotant2.png"))
     image_clignotant_ring_2_window = canvas_color_to_value_anneau_2.create_image(145, 170, image = image_clignotant_ring_2, anchor='nw')
     etape = 2   # Nous sommes au second anneau, donc à la deuxième étape !
     clignotement(root_color_to_value_anneau_2, canvas_color_to_value_anneau_2, etape)
@@ -1128,7 +1135,7 @@ def open_color_to_value_anneau_3(root_precedent):
     # Création de la toile correspondante et affichage de l'image de fond dessus :
     canvas_color_to_value_anneau_3 = Canvas(root_color_to_value_anneau_3, width = 1080, height = 720)
     canvas_color_to_value_anneau_3.pack(fill = "both", expand = True)
-    bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
+    bg = ImageTk.PhotoImage(file = resource_path("img\Background_IMAGE.png"))
     canvas_color_to_value_anneau_3.create_image( 0, 0, image = bg, anchor='nw')
 
     # Affichage de la question pour l'utilisateur :
@@ -1137,71 +1144,71 @@ def open_color_to_value_anneau_3(root_precedent):
     canvas_color_to_value_anneau_3.tag_lower(vz,tu)
 
     # Affichage de l'image de la résistance vide :
-    image_resistance_vide = ImageTk.PhotoImage(file = "img/blank_resistance.png")
+    image_resistance_vide = ImageTk.PhotoImage(file = resource_path("img/blank_resistance.png"))
     canvas_color_to_value_anneau_3.create_image(145, 170, image = image_resistance_vide, anchor='nw')
 
     # Dans les structures conditionnelles qui suivent, en gros j'affiche l'image des anneaux précédents,
     # avec les bonnnes couleurs choisies par l'utilisateur aux questions précédentes !
     if chiffre_1 == 1 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/brown.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/brown1.png"))
         canvas_color_to_value_anneau_3.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 2 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/red.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/red1.png"))
         canvas_color_to_value_anneau_3.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 3 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/orange.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/orange1.png"))
         canvas_color_to_value_anneau_3.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 4 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/yellow.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/yellow1.png"))
         canvas_color_to_value_anneau_3.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 5 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/green.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/green1.png"))
         canvas_color_to_value_anneau_3.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 6 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/blue.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/blue1.png"))
         canvas_color_to_value_anneau_3.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 7 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/purple.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/purple1.png"))
         canvas_color_to_value_anneau_3.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 8 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/grey.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/grey1.png"))
         canvas_color_to_value_anneau_3.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 9 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/white.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/white1.png"))
         canvas_color_to_value_anneau_3.create_image(148, 170, image = image_anneau1, anchor='nw')
     if chiffre_2 == 0 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/black.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/black2.png"))
         canvas_color_to_value_anneau_3.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 1 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/brown.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/brown2.png"))
         canvas_color_to_value_anneau_3.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 2 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/red.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/red2.png"))
         canvas_color_to_value_anneau_3.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 3 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/orange.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/orange2.png"))
         canvas_color_to_value_anneau_3.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 4 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/yellow.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/yellow2.png"))
         canvas_color_to_value_anneau_3.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 5 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/green.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/green2.png"))
         canvas_color_to_value_anneau_3.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 6 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/blue.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/blue2.png"))
         canvas_color_to_value_anneau_3.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 7 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/purple.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/purple2.png"))
         canvas_color_to_value_anneau_3.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 8 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/grey.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/grey2.png"))
         canvas_color_to_value_anneau_3.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 9 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/white.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/white2.png"))
         canvas_color_to_value_anneau_3.create_image(140, 170, image = image_anneau2, anchor='nw')
 
     # Affichage de l'image du rond rouge clignotant que je vais passer à la fonction de clignotement que j'ai créé pour qu'elle fasse clignoter l'image : 
-    image_clignotant_ring_3 = ImageTk.PhotoImage(file = "img/anneau_3/clignotant.png")
+    image_clignotant_ring_3 = ImageTk.PhotoImage(file = resource_path("img/clignotant3.png"))
     image_clignotant_ring_3_window = canvas_color_to_value_anneau_3.create_image(145, 170, image = image_clignotant_ring_3, anchor='nw')
     etape = 3   # Nous sommes au troisième anneau, donc à la troisième étape.
     clignotement(root_color_to_value_anneau_3, canvas_color_to_value_anneau_3, etape)
@@ -1239,7 +1246,7 @@ def open_color_to_value_anneau_4(root_precedent):
     # Création de la toile correspondante et affichage de l'image de fond dessus :
     canvas_color_to_value_anneau_4 = Canvas(root_color_to_value_anneau_4, width = 1080, height = 720)
     canvas_color_to_value_anneau_4.pack(fill = "both", expand = True)
-    bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
+    bg = ImageTk.PhotoImage(file = resource_path("img\Background_IMAGE.png"))
     canvas_color_to_value_anneau_4.create_image( 0, 0, image = bg, anchor='nw')
 
     # Affichage de la question pour l'utilisateur :
@@ -1248,101 +1255,101 @@ def open_color_to_value_anneau_4(root_precedent):
     canvas_color_to_value_anneau_4.tag_lower(vz,tu)
 
     # Affichage de l'image de la résistance vide :
-    image_resistance_vide = ImageTk.PhotoImage(file = "img/blank_resistance.png")
+    image_resistance_vide = ImageTk.PhotoImage(file = resource_path("img/blank_resistance.png"))
     canvas_color_to_value_anneau_4.create_image(145, 170, image = image_resistance_vide, anchor='nw')
 
     # Dans les structures conditionnelles qui suivent, en gros j'affiche l'image des anneaux précédents,
     # avec les bonnnes couleurs choisies par l'utilisateur aux questions précédentes !
     if chiffre_1 == 1 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/brown.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/brown1.png"))
         canvas_color_to_value_anneau_4.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 2 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/red.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/red1.png"))
         canvas_color_to_value_anneau_4.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 3 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/orange.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/orange1.png"))
         canvas_color_to_value_anneau_4.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 4 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/yellow.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/yellow1.png"))
         canvas_color_to_value_anneau_4.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 5 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/green.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/green1.png"))
         canvas_color_to_value_anneau_4.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 6 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/blue.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/blue1.png"))
         canvas_color_to_value_anneau_4.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 7 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/purple.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/purple1.png"))
         canvas_color_to_value_anneau_4.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 8 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/grey.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/grey1.png"))
         canvas_color_to_value_anneau_4.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 9 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/white.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/white1.png"))
         canvas_color_to_value_anneau_4.create_image(148, 170, image = image_anneau1, anchor='nw')
     if chiffre_2 == 0 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/black.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/black2.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 1 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/brown.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/brown2.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 2 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/red.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/red2.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 3 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/orange.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/orange2.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 4 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/yellow.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/yellow2.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 5 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/green.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/green2.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 6 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/blue.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/blue2.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 7 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/purple.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/purple2.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 8 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/grey.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/grey2.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 9 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/white.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/white2.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau2, anchor='nw')
     if chiffre_3 == 0 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/black.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/black3.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 1 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/brown.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/brown3.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 2 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/red.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/red3.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 3 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/orange.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/orange3.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 4 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/yellow.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/yellow3.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 5 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/green.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/green3.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 6 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/blue.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/blue3.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 7 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/purple.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/purple3.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 8 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/grey.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/grey3.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 9 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/white.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/white3.png"))
         canvas_color_to_value_anneau_4.create_image(140, 170, image = image_anneau3, anchor='nw')
 
     # Affichage de l'image du rond rouge clignotant que je vais passer à la fonction de clignotement que j'ai créé pour qu'elle fasse clignoter l'image :    
-    image_clignotant_ring_4 = ImageTk.PhotoImage(file = "img/anneau_4/clignotant.png")
+    image_clignotant_ring_4 = ImageTk.PhotoImage(file = resource_path("img/clignotant4.png"))
     image_clignotant_ring_4_window = canvas_color_to_value_anneau_4.create_image(145, 170, image = image_clignotant_ring_4, anchor='nw')
     etape = 4   # Nous sommes au quatrième anneau, donc à la quatrième étape.
     clignotement(root_color_to_value_anneau_4, canvas_color_to_value_anneau_4, etape)
@@ -1380,7 +1387,7 @@ def open_color_to_value_anneau_5(root_precedent):
     # Création de la toile correspondante et affichage de l'image de fond dessus :
     canvas_color_to_value_anneau_5 = Canvas(root_color_to_value_anneau_5, width = 1080, height = 720)
     canvas_color_to_value_anneau_5.pack(fill = "both", expand = True)
-    bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
+    bg = ImageTk.PhotoImage(file = resource_path("img\Background_IMAGE.png"))
     canvas_color_to_value_anneau_5.create_image( 0, 0, image = bg, anchor='nw')
 
     # Affichage de la question pour l'utilisateur :
@@ -1389,134 +1396,134 @@ def open_color_to_value_anneau_5(root_precedent):
     canvas_color_to_value_anneau_5.tag_lower(vz,tu)
 
     # Affichage de l'image de la résistance vide :
-    image_resistance_vide = ImageTk.PhotoImage(file = "img/blank_resistance.png")
+    image_resistance_vide = ImageTk.PhotoImage(file = resource_path("img/blank_resistance.png"))
     canvas_color_to_value_anneau_5.create_image(145, 170, image = image_resistance_vide, anchor='nw')
 
     # Dans les structures conditionnelles qui suivent, en gros j'affiche l'image des anneaux précédents,
     # avec les bonnnes couleurs choisies par l'utilisateur aux questions précédentes !
     if chiffre_1 == 1 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/brown.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/brown1.png"))
         canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 2 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/red.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/red1.png"))
         canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 3 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/orange.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/orange1.png"))
         canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 4 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/yellow.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/yellow1.png"))
         canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 5 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/green.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/green1.png"))
         canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 6 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/blue.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/blue1.png"))
         canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 7 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/purple.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/purple1.png"))
         canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 8 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/grey.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/grey1.png"))
         canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 9 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/white.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/white1.png"))
         canvas_color_to_value_anneau_5.create_image(148, 170, image = image_anneau1, anchor='nw')
     if chiffre_2 == 0 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/black.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/black2.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 1 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/brown.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/brown2.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 2 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/red.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/red2.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 3 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/orange.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/orange2.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 4 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/yellow.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/yellow2.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 5 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/green.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/green2.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 6 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/blue.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/blue2.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 7 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/purple.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/purple2.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 8 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/grey.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/grey2.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 9 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/white.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/white2.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau2, anchor='nw')
     if chiffre_3 == 0 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/black.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/black3.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 1 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/brown.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/brown3.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 2 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/red.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/red3.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 3 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/orange.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/orange3.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 4 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/yellow.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/yellow3.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 5 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/green.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/green3.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 6 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/blue.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/blue3.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 7 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/purple.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/purple3.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 8 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/grey.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/grey3.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 9 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/white.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/white3.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau3, anchor='nw')
     if chiffre_4 == 'x1' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/black.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/black4.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x10' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/brown.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/brown4.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x100' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/red.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/red4.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x1k' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/orange.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/orange4.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x100k' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/green.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/green4.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x1M' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/blue.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/blue4.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x10M' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/purple.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/purple4.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x100M' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/grey.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/grey4.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x1G' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/white.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/white4.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x0.1' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/gold.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/gold4.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x0.01' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/silver.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/silver4.png"))
         canvas_color_to_value_anneau_5.create_image(140, 170, image = image_anneau4, anchor='nw')
 
     # Affichage de l'image du rond rouge clignotant que je vais passer à la fonction de clignotement que j'ai créé pour qu'elle fasse clignoter l'image :    
-    image_clignotant_ring_5 = ImageTk.PhotoImage(file = "img/anneau_5/clignotant.png")
+    image_clignotant_ring_5 = ImageTk.PhotoImage(file = resource_path("img/clignotant5.png"))
     image_clignotant_ring_5_window = canvas_color_to_value_anneau_5.create_image(145, 170, image = image_clignotant_ring_5, anchor='nw')
     etape = 5   # Nous sommes au cinquième anneau, donc à la cinquième étape.
     clignotement(root_color_to_value_anneau_5, canvas_color_to_value_anneau_5, etape)
@@ -1554,7 +1561,7 @@ def open_color_to_value_anneau_6(root_precedent):
     # Création de la toile correspondante et affichage de l'image de fond dessus :
     canvas_color_to_value_anneau_6 = Canvas(root_color_to_value_anneau_6, width = 1080, height = 720)
     canvas_color_to_value_anneau_6.pack(fill = "both", expand = True)
-    bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
+    bg = ImageTk.PhotoImage(file = resource_path("img\Background_IMAGE.png"))
     canvas_color_to_value_anneau_6.create_image( 0, 0, image = bg, anchor='nw')
 
     # Affichage de la question pour l'utilisateur :
@@ -1563,155 +1570,155 @@ def open_color_to_value_anneau_6(root_precedent):
     canvas_color_to_value_anneau_6.tag_lower(vz,tu)
 
     # Affichage de l'image de la résistance vide :
-    image_resistance_vide = ImageTk.PhotoImage(file = "img/blank_resistance.png")
+    image_resistance_vide = ImageTk.PhotoImage(file = resource_path("img/blank_resistance.png"))
     canvas_color_to_value_anneau_6.create_image(145, 170, image = image_resistance_vide, anchor='nw')
 
     # Dans les structures conditionnelles qui suivent, en gros j'affiche l'image des anneaux précédents,
     # avec les bonnnes couleurs choisies par l'utilisateur aux questions précédentes !
     if chiffre_1 == 1 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/brown.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/brown1.png"))
         canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 2 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/red.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/red1.png"))
         canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 3 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/orange.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/orange1.png"))
         canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 4 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/yellow.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/yellow1.png"))
         canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 5 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/green.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/green1.png"))
         canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 6 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/blue.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/blue1.png"))
         canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 7 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/purple.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/purple1.png"))
         canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 8 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/grey.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/grey1.png"))
         canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
     elif chiffre_1 == 9 :
-        image_anneau1 = ImageTk.PhotoImage(file = "img/anneau_1/white.png")
+        image_anneau1 = ImageTk.PhotoImage(file = resource_path("img/white1.png"))
         canvas_color_to_value_anneau_6.create_image(148, 170, image = image_anneau1, anchor='nw')
     if chiffre_2 == 0 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/black.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/black2.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 1 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/brown.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/brown2.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 2 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/red.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/red2.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 3 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/orange.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/orange2.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 4 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/yellow.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/yellow2.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 5 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/green.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/green2.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 6 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/blue.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/blue2.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 7 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/purple.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/purple2.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 8 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/grey.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/grey2.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
     elif chiffre_2 == 9 :
-        image_anneau2 = ImageTk.PhotoImage(file = "img/anneau_2/white.png")
+        image_anneau2 = ImageTk.PhotoImage(file = resource_path("img/white2.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau2, anchor='nw')
     if chiffre_3 == 0 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/black.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/black3.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 1 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/brown.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/brown3.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 2 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/red.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/red3.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 3 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/orange.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/orange3.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 4 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/yellow.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/yellow3.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 5 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/green.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/green3.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 6 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/blue.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/blue3.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 7 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/purple.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/purple3.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 8 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/grey.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/grey3.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
     elif chiffre_3 == 9 :
-        image_anneau3 = ImageTk.PhotoImage(file = "img/anneau_3/white.png")
+        image_anneau3 = ImageTk.PhotoImage(file = resource_path("img/white3.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau3, anchor='nw')
     if chiffre_4 == 'x1' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/black.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/black4.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x10' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/brown.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/brown4.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x100' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/red.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/red4.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x1k' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/orange.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/orange4.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x100k' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/green.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/green4.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x1M' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/blue.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/blue4.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x10M' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/purple.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/purple4.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x100M' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/grey.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/grey4.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x1G' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/white.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/white4.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x0.1' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/gold.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/gold4.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
     elif chiffre_4 == 'x0.01' :
-        image_anneau4 = ImageTk.PhotoImage(file = "img/anneau_4/silver.png")
+        image_anneau4 = ImageTk.PhotoImage(file = resource_path("img/silver4.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau4, anchor='nw')
     if chiffre_5 == '±1%' :
-        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/brown.png")
+        image_anneau5 = ImageTk.PhotoImage(file = resource_path("img/brown5.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
     elif chiffre_5 == '±2%' :
-        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/red.png")
+        image_anneau5 = ImageTk.PhotoImage(file = resource_path("img/red5.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
     elif chiffre_5 == '±0.5%' :
-        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/green.png")
+        image_anneau5 = ImageTk.PhotoImage(file = resource_path("img/green5.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
     elif chiffre_5 == '±0.25%' :
-        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/blue.png")
+        image_anneau5 = ImageTk.PhotoImage(file = resource_path("img/blue5.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
     elif chiffre_5 == '±0.10%' :
-        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/purple.png")
+        image_anneau5 = ImageTk.PhotoImage(file = resource_path("img/purple5.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
     elif chiffre_5 == '±5%' :
-        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/gold.png")
+        image_anneau5 = ImageTk.PhotoImage(file = resource_path("img/gold5.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
     elif chiffre_5 == '±10%' :
-        image_anneau5 = ImageTk.PhotoImage(file = "img/anneau_5/silver.png")
+        image_anneau5 = ImageTk.PhotoImage(file = resource_path("img/silver5.png"))
         canvas_color_to_value_anneau_6.create_image(140, 170, image = image_anneau5, anchor='nw')
 
     # Affichage de l'image du rond rouge clignotant que je vais passer à la fonction de clignotement que j'ai créé pour qu'elle fasse clignoter l'image :
-    image_clignotant_ring_6 = ImageTk.PhotoImage(file = "img/anneau_6/clignotant.png")
+    image_clignotant_ring_6 = ImageTk.PhotoImage(file = resource_path("img/clignotant6.png"))
     image_clignotant_ring_6_window = canvas_color_to_value_anneau_6.create_image(145, 170, image = image_clignotant_ring_6, anchor='nw')
     etape = 6   # Nous sommes au sixième anneau, donc à la sixième étape !
     clignotement(root_color_to_value_anneau_6, canvas_color_to_value_anneau_6, etape)
@@ -1749,7 +1756,7 @@ def open_color_to_value_result(root_precedent):
     # Création de la toile correspondante et affichage de l'image de fond dessus :
     canvas_color_to_value_result = Canvas(root_color_to_value_result, width = 1080, height = 720)
     canvas_color_to_value_result.pack(fill = "both", expand = True)
-    bg = ImageTk.PhotoImage(file = "img\Background_IMAGE.png")
+    bg = ImageTk.PhotoImage(file = resource_path("img\Background_IMAGE.png"))
     canvas_color_to_value_result.create_image( 0, 0, image = bg, anchor='nw')
 
     # Affichage du titre sur la page :
